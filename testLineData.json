@@ -1,0 +1,290 @@
+{
+  "DREAM": [
+    {
+      "checkin_counts": 100,
+      "onboard_counts": 100,
+      "checkin_time": "10:50",
+      "onboard_time": 2,
+      "key": "1"
+    },
+    {
+      "checkin_counts": 80,
+      "onboard_countss": 80,
+      "checkin_time": "13:50",
+      "onboard_time": 2,
+      "key": "2"
+    },
+    {
+      "checkin_counts": 200,
+      "onboard_counts": 200,
+      "checkin_time": "16:50",
+      "onboard_time": 2,
+      "key": "3"
+    },
+    {
+      "checkin_counts": 30,
+      "onboard_counts": 30,
+      "checkin_time": "18:50",
+      "onboard_time": 2,
+      "key": "4"
+    },
+    {
+      "checkin_counts": 60,
+      "onboard_counts": 60,
+      "checkin_time": "02:50",
+      "onboard_time": 2,
+      "key": "5"
+    },
+    {
+      "checkin_counts": 80,
+      "onboard_counts": 80,
+      "checkin_time": "07:50",
+      "onboard_time": 2,
+      "key": "6"
+    },
+    {
+      "checkin_counts": 150,
+      "onboard_counts": 150,
+      "checkin_time": "09:50",
+      "onboard_time": 2,
+      "key": "7"
+    },
+    {
+      "checkin_counts": 170,
+      "onboard_counts": 170,
+      "checkin_time": "15:50",
+      "onboard_time": 2,
+      "key": "8"
+    },
+    {
+      "checkin_counts": 90,
+      "onboard_counts": 90,
+      "checkin_time": "22:50",
+      "onboard_time": 2,
+      "key": "9"
+    },
+    {
+      "checkin_counts": 20,
+      "onboard_counts": 20,
+      "checkin_time": "12:50",
+      "onboard_time": 2,
+      "key": "10"
+    }
+  ],
+  "MAGIC": [
+    {
+      "checkin_counts": 10,
+      "onboard_counts": 10,
+      "checkin_time": "10:50",
+      "onboard_time": 2,
+      "key": "1"
+    },
+    {
+      "checkin_counts": 55,
+      "onboard_countss": 45,
+      "checkin_time": "13:50",
+      "onboard_time": 2,
+      "key": "2"
+    },
+    {
+      "checkin_counts": 27,
+      "onboard_counts": 20,
+      "checkin_time": "16:50",
+      "onboard_time": 2,
+      "key": "3"
+    },
+    {
+      "checkin_counts": 70,
+      "onboard_counts": 60,
+      "checkin_time": "18:50",
+      "onboard_time": 2,
+      "key": "4"
+    },
+    {
+      "checkin_counts": 60,
+      "onboard_counts": 40,
+      "checkin_time": "02:50",
+      "onboard_time": 2,
+      "key": "5"
+    },
+    {
+      "checkin_counts": 50,
+      "onboard_counts": 49,
+      "checkin_time": "07:50",
+      "onboard_time": 2,
+      "key": "6"
+    },
+    {
+      "checkin_counts": 60,
+      "onboard_counts": 55,
+      "checkin_time": "09:50",
+      "onboard_time": 2,
+      "key": "7"
+    },
+    {
+      "checkin_counts": 88,
+      "onboard_counts": 88,
+      "checkin_time": "15:50",
+      "onboard_time": 2,
+      "key": "8"
+    },
+    {
+      "checkin_counts": 96,
+      "onboard_counts": 95,
+      "checkin_time": "22:50",
+      "onboard_time": 2,
+      "key": "9"
+    },
+    {
+      "checkin_counts": 26,
+      "onboard_counts": 25,
+      "checkin_time": "12:50",
+      "onboard_time": 2,
+      "key": "10"
+    }
+  ],
+  "SCARLET": [
+    {
+      "checkin_counts": 80,
+      "onboard_counts": 40,
+      "checkin_time": "10:50",
+      "onboard_time": 2,
+      "key": "1"
+    },
+    {
+      "checkin_counts": 70,
+      "onboard_countss": 70,
+      "checkin_time": "13:50",
+      "onboard_time": 2,
+      "key": "2"
+    },
+    {
+      "checkin_counts": 80,
+      "onboard_counts": 79,
+      "checkin_time": "16:50",
+      "onboard_time": 2,
+      "key": "3"
+    },
+    {
+      "checkin_counts": 45,
+      "onboard_counts": 30,
+      "checkin_time": "18:50",
+      "onboard_time": 2,
+      "key": "4"
+    },
+    {
+      "checkin_counts": 69,
+      "onboard_counts": 68,
+      "checkin_time": "02:50",
+      "onboard_time": 2,
+      "key": "5"
+    },
+    {
+      "checkin_counts": 88,
+      "onboard_counts": 80,
+      "checkin_time": "07:50",
+      "onboard_time": 2,
+      "key": "6"
+    },
+    {
+      "checkin_counts": 159,
+      "onboard_counts": 150,
+      "checkin_time": "09:50",
+      "onboard_time": 2,
+      "key": "7"
+    },
+    {
+      "checkin_counts": 30,
+      "onboard_counts": 17,
+      "checkin_time": "15:50",
+      "onboard_time": 2,
+      "key": "8"
+    },
+    {
+      "checkin_counts": 77,
+      "onboard_counts": 76,
+      "checkin_time": "22:50",
+      "onboard_time": 2,
+      "key": "9"
+    },
+    {
+      "checkin_counts": 82,
+      "onboard_counts": 80,
+      "checkin_time": "12:50",
+      "onboard_time": 2,
+      "key": "10"
+    }
+  ],
+  "VALIANT": [
+    {
+      "checkin_counts": 29,
+      "onboard_counts": 122,
+      "checkin_time": "10:50",
+      "onboard_time": 2,
+      "key": "1"
+    },
+    {
+      "checkin_counts": 80,
+      "onboard_countss": 80,
+      "checkin_time": "13:50",
+      "onboard_time": 2,
+      "key": "2"
+    },
+    {
+      "checkin_counts": 200,
+      "onboard_counts": 200,
+      "checkin_time": "16:50",
+      "onboard_time": 2,
+      "key": "3"
+    },
+    {
+      "checkin_counts": 30,
+      "onboard_counts": 30,
+      "checkin_time": "18:50",
+      "onboard_time": 2,
+      "key": "4"
+    },
+    {
+      "checkin_counts": 60,
+      "onboard_counts": 60,
+      "checkin_time": "02:50",
+      "onboard_time": 2,
+      "key": "5"
+    },
+    {
+      "checkin_counts": 80,
+      "onboard_counts": 80,
+      "checkin_time": "07:50",
+      "onboard_time": 2,
+      "key": "6"
+    },
+    {
+      "checkin_counts": 150,
+      "onboard_counts": 150,
+      "checkin_time": "09:50",
+      "onboard_time": 2,
+      "key": "7"
+    },
+    {
+      "checkin_counts": 170,
+      "onboard_counts": 170,
+      "checkin_time": "15:50",
+      "onboard_time": 2,
+      "key": "8"
+    },
+    {
+      "checkin_counts": 90,
+      "onboard_counts": 90,
+      "checkin_time": "22:50",
+      "onboard_time": 2,
+      "key": "9"
+    },
+    {
+      "checkin_counts": 20,
+      "onboard_counts": 20,
+      "checkin_time": "12:50",
+      "onboard_time": 2,
+      "key": "10"
+    }
+  ]
+}

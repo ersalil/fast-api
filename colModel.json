@@ -1,0 +1,37 @@
+[
+    {
+      "title": "Shipa Name",
+      "dataIndex": "ship",
+      "key": "ship"
+    },
+    {
+        "title": "Ship Name",
+        "dataIndex": "ship",
+        "key": "ship"
+      },
+    {
+      "title": "Embarkation Count",
+      "dataIndex": "embarkation_counts",
+      "key": "embarkation_counts"
+    },
+    {
+      "title": "OCI Count",
+      "dataIndex": "oci_completed",
+      "key": "oci_completed"
+    },
+    {
+      "title": "MOCI Count",
+      "dataIndex": "moci_completed",
+      "key": "moci_completed"
+    },
+    {
+      "title": "CheckIn Time",
+      "dataIndex": "checkin_time",
+      "key": "checkin_time"
+    },
+    {
+      "title": "OnBoard Time",
+      "dataIndex": "onboard_time",
+      "key": "onboard_time"
+    }
+  ]
