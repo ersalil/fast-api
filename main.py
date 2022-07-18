@@ -27,3 +27,8 @@ def shipCol():
 @app.get('/line/data')
 def lineData():
     return data.testLineData
+
+
+@app.get('/bar/data')
+def barData():
+    return data.testBarData
