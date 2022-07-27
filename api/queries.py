@@ -8,7 +8,7 @@ def emb_data(limit):
             es.onboard_couch,
             es.expected_couch,
             SUBSTRING( v2."number", 0, 3) as code,
-            v2.number
+            v2."number" as number
             FROM
             embark_summary es
             JOIN
