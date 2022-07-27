@@ -19,7 +19,7 @@ allow_headers=['*']
 db = SessionLocal()
 
 @app.get('/s')
-def shipData():
+def shipD():
     conn = database.engine.connect()
     result = conn.execute('SELECT ship.name, ship.code FROM ship')
     ls = []
@@ -39,7 +39,7 @@ def embSummary():
 @app.get('/')
 def main():
     es = embSummary()
-    ships = shipData()
+    ships = shipD()
     for dic in es:
         for ship in ships:
             if(dic['code'] == ship['code']):
