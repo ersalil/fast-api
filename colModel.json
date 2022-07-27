@@ -1,37 +1,37 @@
 [
     {
         "title": "Ship Name",
-        "dataIndex": "ship",
-        "key": "ship"
-      },
-      {
-        "title": "Ship Name",
-        "dataIndex": "ship",
-        "key": "ship"
-      },
+        "dataIndex": "code",
+        "key": "code"
+    },
+    {
+      "title": "Ship Number",
+      "dataIndex": "number",
+      "key": "number"
+    },
     {
       "title": "Embarkation Count",
-      "dataIndex": "embarkation_counts",
-      "key": "embarkation_counts"
+      "dataIndex": "expected_couch",
+      "key": "expected_couch"
     },
     {
       "title": "OCI Count",
-      "dataIndex": "oci_completed",
-      "key": "oci_completed"
+      "dataIndex": "oci_completed_core",
+      "key": "oci_completed_core"
     },
     {
       "title": "MOCI Count",
-      "dataIndex": "moci_completed",
-      "key": "moci_completed"
+      "dataIndex": "moci_completed_core",
+      "key": "moci_completed_core"
     },
     {
       "title": "CheckIn Time",
-      "dataIndex": "checkin_time",
-      "key": "checkin_time"
+      "dataIndex": "checkedin_couch",
+      "key": "checkedin_couch"
     },
     {
       "title": "OnBoard Time",
-      "dataIndex": "onboard_time",
-      "key": "onboard_time"
+      "dataIndex": "onboard_couch",
+      "key": "onboard_couch"
     }
   ]

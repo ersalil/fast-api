@@ -5,6 +5,7 @@ from database import SessionLocal
 from sqlalchemy.sql import func, desc
 import database
 from queries import emb_data
+from data import testTableData, testLineData, testBarData, colModel
 
 app = FastAPI()
 
@@ -46,7 +47,7 @@ def main():
                 break
     return es
 
-@app.get('/yash')
+@app.get('/table/data')
 def tableView():
     es = embSummary()
     ls = []
@@ -61,4 +62,21 @@ def tableView():
             ls.append(dictionary1)
     return ls
 
-    
+@app.get('/ship/data')
+def shipData():
+    return testTableData
+
+
+@app.get('/ship/col')
+def shipCol():
+    return colModel
+
+
+@app.get('/line/data')
+def lineData():
+    return testLineData
+
+
+@app.get('/bar/data')
+def barData():
+    return testBarData

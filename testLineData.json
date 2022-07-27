@@ -1,5 +1,5 @@
 {
-  "DREAM": [
+  "DM": [
     {
       "embarkation":1,
       "checkin_counts": 100,
@@ -145,7 +145,7 @@
       "key": "2"
     }
   ],
-  "MAGIC": [
+  "DF": [
     {
       "embarkation":1,
       "checkin_counts": 10,
@@ -228,7 +228,7 @@
       "key": "10"
     }
   ],
-  "SCARLET": [
+  "DW": [
     {
       "checkin_counts": 100,
       "onboard_counts": 200,

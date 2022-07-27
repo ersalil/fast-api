@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import funcfilter
 from sqlalchemy.sql import func, desc
-import data
+import api.data as data
 import uvicorn
 
 app = FastAPI()
