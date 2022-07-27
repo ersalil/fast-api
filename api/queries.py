@@ -6,7 +6,9 @@ def emb_data(limit):
             es.moci_completed_core,
             es.checkedin_couch,
             es.onboard_couch,
-            SUBSTRING( v2."number", 0, 3) as code
+            es.expected_couch,
+            SUBSTRING( v2."number", 0, 3) as code,
+            v2.number
             FROM
             embark_summary es
             JOIN

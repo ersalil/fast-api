@@ -45,3 +45,20 @@ def main():
                 dic['name'] = ship['name']
                 break
     return es
+
+@app.get('/yash')
+def tableView():
+    es = embSummary()
+    ls = []
+    for dictionary1 in es:
+        flag = 0
+        if len(ls) == 5:
+            return ls
+        for i in ls:
+            if i['code'] == dictionary1['code']:
+                flag = 1
+        if flag == 0:
+            ls.append(dictionary1)
+    return ls
+
+    
