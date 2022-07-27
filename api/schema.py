@@ -14,9 +14,26 @@ class Embark(BaseModel):
     class Config:
         orm_mode = True
 
+class Ship(BaseModel):
+    ship_id = str
+    name = str
+    code = str
+
+    class Config:
+        orm_mode = True
+
+class Environment(BaseModel):
+    environment_id = str
+    ship_id = str
+
+    class Config:
+        orm_mode = True
+
 class Voyage(BaseModel):
     voyage_id: str
     number: int
+    environment_id = str
+    embark_date = datetime
 
     class Config:
         orm_mode = True

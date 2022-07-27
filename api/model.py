@@ -14,9 +14,21 @@ class Embark(Base):
     checkedin_couch = Column(Integer)
     onboard_couch = Column(Integer)
 
+class Ship(Base):
+    __tablename__ = 'ship'
+    ship_id = Column(String, primary_key=True)
+    name = Column(String)
+    code = Column(String)
+
+class Environment(Base):
+    __tablename__ = 'environment'
+    environment_id = Column(String, primary_key=True)
+    ship_id = Column(String)
 
 class Voyage(Base):
     __tablename__ = 'voyage'
     voyage_id = Column(String)
     number = Column(String)
+    environment_id = Column(String)
+    embark_date = Column(DateTime)
     added_date = Column(TIMESTAMP, primary_key=True)
