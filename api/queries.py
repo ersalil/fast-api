@@ -49,6 +49,16 @@ def emb_data(limit):
                                 ON e.ship_id = s.ship_id
                         WHERE
                             e.ship_id IS NOT NULL
+                        ) 
+                        AND v.embark_date < (
+                        SELECT 
+                            es.added_date 
+                        FROM 
+                            embark_summary es 
+                        ORDER BY 
+                            es.added_date DESC 
+                        LIMIT 
+                            1
                         )
                 )
                 SELECT
