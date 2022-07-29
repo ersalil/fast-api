@@ -8,8 +8,8 @@ class Embark(BaseModel):
     added_date: datetime
     oci_completed_core: int
     moci_completed_core: int
-    checkedin_couch: int
-    onboard_couch: int
+    starting_date: datetime
+    end_date: datetime
 
     class Config:
         orm_mode = True
