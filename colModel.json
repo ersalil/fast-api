@@ -26,12 +26,12 @@
     },
     {
       "title": "CheckIn Time",
-      "dataIndex": "checkedin_couch",
-      "key": "checkedin_couch"
+      "dataIndex": "starting_date",
+      "key": "starting_date"
     },
     {
       "title": "OnBoard Time",
-      "dataIndex": "onboard_couch",
-      "key": "onboard_couch"
+      "dataIndex": "end_date",
+      "key": "end_date"
     }
   ]
