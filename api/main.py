@@ -33,7 +33,7 @@ def shipD():
 @app.get('/e')
 def embSummary():
     conn = database.engine.connect()
-    result = conn.execute(emb_data(2))
+    result = conn.execute(emb_data(10))
     ls = []
     for r in result:
         ls.append(dict(r))
