@@ -49,17 +49,9 @@ def emb_data(limit):
                                 ON e.ship_id = s.ship_id
                         WHERE
                             e.ship_id IS NOT NULL
-                        ) 
-                        AND v.embark_date < (
-                        SELECT 
-                            es.added_date 
-                        FROM 
-                            embark_summary es 
-                        ORDER BY 
-                            es.added_date DESC 
-                        LIMIT 
-                            1
                         )
+                        AND v.embark_date < NOW()
+                        
                 )
                 SELECT
                     cte.vid
@@ -68,6 +60,7 @@ def emb_data(limit):
                 WHERE
                     rw <= {limit}
             )
+            and es.added_date <= (select (v3.embark_date + interval '1 day') from voyage v3 where v3.voyage_id = es.voyage_id)
             ORDER BY
             es.added_date DESC"""
 
@@ -144,3 +137,29 @@ def emb_data_bar(limit):
             )
             ORDER BY
             es.added_date DESC"""
+
+
+def voyage_data():
+    return f"""With CTE (rw, vid, eid, edate, ddate, sid, sname, scode) AS (
+        select row_number() over ( partition by v.environment_id order by v.embark_date desc) RN , v.voyage_id, v.environment_id, v.embark_date, v.debark_date , s2.ship_id , s2."name", s2.code
+        from voyage v join environment e2  on v.environment_id = e2.environment_id join ship s2 on e2.ship_id = s2.ship_id
+        where v.environment_id in
+        (select environment_id from environment e join ship s on e.ship_id = s.ship_id where e.ship_id is not null) and v.embark_date < (select es.added_date  from embark_summary es order by es.added_date desc limit 1)
+    )
+Select cte.vid, cte.edate, cte.ddate from cte where rw <=10"""
+
+
+def a(vid, start, end):
+    return f"""select es2.voyage_id , es2.added_date , es2.checkedin_couch , es2.onboard_couch , v."number" 
+                from embark_summary es2  join voyage v on v.voyage_id = es2.voyage_id where es2.added_date in
+                    (
+                    select 
+                        (   
+                            select max(added_date)::timestamp
+                            from embark_summary es
+                            where voyage_id = '{vid}'
+                            and (added_date between x::timestamp and (x::timestamp +'30 minute'::interval))
+                        )
+                    from generate_series(timestamp '{start}' , timestamp '{end}' , interval  '30 min') t(x)
+                    ) 
+                order by v."number" """
