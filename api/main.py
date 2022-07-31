@@ -1,3 +1,4 @@
+from tabnanny import check
 from wsgiref.simple_server import demo_app
 from anyio import current_time
 from fastapi import FastAPI
@@ -8,12 +9,13 @@ from sqlalchemy.sql import func, desc
 import database, datetime
 from queries import emb_data, emb_data_bar
 from data import testTableData, testLineData, testBarData, colModel
+from datetimerange import DateTimeRange
 
 f = '%Y-%m-%d %H:%M:%S'
 
 app = FastAPI()
 
-origins = ['http://localhost:3000', 'http://127.0.0.1:3000','https://a7d3-182-64-76-131.in.ngrok.io','https://a8ec-182-64-76-131.in.ngrok.io']
+origins = ['http://localhost:3000', 'http://127.0.0.1:3000','https://d854-182-73-51-26.in.ngrok.io','https://28e8-182-73-51-26.in.ngrok.io']
 app.add_middleware(CORSMiddleware,
 allow_origins=origins,
 allow_credentials=True,
@@ -107,7 +109,34 @@ def barData():
 def roundTime(dt):
     round_mins = 30
     mins = dt.minute - (dt.minute % round_mins)
-    return datetime.datetime(dt.year, dt.month, dt.day, dt.hour, mins).strftime("%H:%M")
+    return datetime.datetime(dt.year, dt.month, dt.day, dt.hour, mins)
+    # return datetime.datetime(dt.year, dt.month, dt.day, dt.hour, mins).strftime("%H:%M")
+
+# @app.get('/voy')
+# def voyage():
+#     conn = database.engine.connect()
+#     result = conn.execute(voyage_data())
+#     ls = []
+#     for r in result:
+#         ls.append(dict(r))
+#     return ls
+
+# @app.get('/t')
+# def st():
+#     vy = voyage()
+#     mainD = []
+#     for x in vy:   
+#         conn = database.engine.connect()
+#         tmpR = conn.execute(a(x['vid'], x['edate'],x['ddate']))
+#         mainD.append(tmpR)
+#     return mainD
+
+
+
+
+
+
+
 
 @app.get('/sa')
 def salil():
@@ -121,15 +150,19 @@ def salil():
                 value.append(dic['number'])
         value = list(set(value))
         ls = []
+        minMaxpership = []
+        
         for v in value:
             # dicTmp = []
             tmp_index= 0
             unique_int = {}
+            minMaxList = []
             
             for dic in es:
                 # tmp = {}
                 if dic['number'] == v:
                     dt = roundTime(dic['added_date'])
+                    minMaxList.append(dt)
                     # tmp['voyage_id'] = v
 
                     # try:
@@ -151,18 +184,74 @@ def salil():
 
                     # dicTmp.append(tmp)
                     tmp_index +=1
-
+            minMaxpership.append([min(minMaxList),max(minMaxList)])
             ls.append(unique_int)
         
         # for u in unique_int:
+        # fl = []
+        # for x, y in zip(ls,minMaxpership):
+        #     dic_time = list(x.items())
+        #     dateTimeRange = DateTimeRange(y[0], y[1])
+        #     for r in dateTimeRange.range(datetime.timedelta(minutes=30)):
+        #         for idx, (dkey,dval) in enumerate(dic_time):
+                    
+        #             tmpD = {}
+        #             tmpD['voyage_id'] = dval[1]
+        #             if dkey == r:
+                        
+        #                 dkey = dkey.strftime("%H:%M")
+        #                 tmpD['checkedin_time'] = dkey
+        #                 tmpD['onboard_time'] = dkey
+        #                 tmpD["actual_count"] = dval[0]
+
+        #                 if dval[0] != 0:
+        #                     try:
+        #                         dval[0] = dval[0] - dic_time[idx+1][1][0]
+        #                         dic_time[idx][1][0] = dval[0]
+        #                     except:
+        #                         pass
+        #                     tmpD['checkedin_couch'] = dval[0]
+        #                     tmpD['onboard_couch'] = dval[0]
+        #                     if dval[0] != 0:
+        #                         flag = True
+        #                         fl.append(tmpD)
+                    
+        # fl = sorted(fl, key=lambda i: i['checkedin_time'])
+        
+    #     filter[ship['code']] = fl
+    # return filter
+
+
+
+
         fl = []
         for x in ls:
+            tmpDate = ''
+            tmpDatecount = -1
             dic_time = list(x.items())
             flag = False
+            checkDatetime = ''
             for idx, (dkey,dval) in enumerate(dic_time):
+                if checkDatetime == '': checkDatetime = dkey.strftime("%H:%M")
+                if tmpDate != dkey.date():
+                    tmpDate = dkey.date()
+                    tmpDatecount+=1
+                    print("upadte hua in ", tmpDatecount, '/t',dkey.date())
+                print(":::::    ", tmpDatecount, '/t',dkey.date(), "    :::::")
                 tmpD = {}
                 tmpD['voyage_id'] = dval[1]
-                tmpD['checkedin_time'] = dkey
+
+                dkey = dkey.strftime("%H:%M")
+                if checkDatetime > dkey:
+                    print('warning here', dval[1])
+                checkDatetime = dkey
+
+                if tmpDatecount != 0:
+                    tmpD['checkedin_time'] = str(tmpDatecount) + '+' + str(dkey)
+                    print(tmpD['checkedin_time'])
+                else:
+                    tmpD['checkedin_time'] = dkey
+
                 tmpD['onboard_time'] = dkey
                 tmpD["actual_count"] = dval[0]
                 if dval[0] != 0:
@@ -173,27 +262,10 @@ def salil():
                         pass
                     tmpD['checkedin_couch'] = dval[0]
                     tmpD['onboard_couch'] = dval[0]
-                    if dval[0] != 0 or flag:
+                    if dval[0] != 0:
                         flag = True
                         fl.append(tmpD)
 
-        # dic_time = list(ls[0].items())
-        # for idx, (dkey,dval) in enumerate(dic_time):
-        #     tmpD = {}
-        #     tmpD['voyage_id'] = dval[1]
-        #     tmpD['checkedin_time'] = dkey
-        #     if dval[0] == 0:
-        #         tmpD['checkedin_couch'] = dval[0]
-        #     else:
-        #         try:
-        #             dval[0] = dval[0] - dic_time[idx+1][1][0]
-        #             dic_time[idx][1][0] = dval[0]
-        #         except:
-        #             pass
-        #         tmpD['checkedin_couch'] = dval[0]
-        #     fl.append(tmpD)
-        
-
-
+        fl = sorted(fl, key=lambda i: i['checkedin_time'])
         filter[ship['code']] = fl
     return filter
