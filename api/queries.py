@@ -61,6 +61,7 @@ def emb_data(limit):
                     rw <= {limit}
             )
             and es.added_date <= (select (v3.embark_date + interval '1 day') from voyage v3 where v3.voyage_id = es.voyage_id)
+            and es.checkedin_couch > 0
             ORDER BY
             es.added_date DESC"""
 

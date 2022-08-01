@@ -262,7 +262,7 @@ def salil():
                         pass
                     tmpD['checkedin_couch'] = dval[0]
                     tmpD['onboard_couch'] = dval[0]
-                    if dval[0] != 0:
+                    if dval[0] != 0 or flag:
                         flag = True
                         fl.append(tmpD)
 
