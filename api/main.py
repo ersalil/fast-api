@@ -72,12 +72,12 @@ def tableView():
             flag2 = 0
             inti = each['checkedin_couch']
             for each1 in es:
-                if each1['voyage_id'] == each['voyage_id'] and each1['checkedin_couch'] < inti and flag1 == 0:
+                if each1['voyage_id'] == each['voyage_id'] and each1['checkedin_couch'] <= inti and flag1 == 0:
                     each['end_date'] = str(datetime.datetime(each1['added_date'].year , each1['added_date'].month , each1['added_date'].day, each1['added_date'].hour, each1['added_date'].minute, each1['added_date'].second)).replace('T', " ")
                     flag1 = 1
             # // reverse loop to find the latest date
             for each2 in es:
-                if each2['voyage_id'] == each['voyage_id'] and each2['checkedin_couch'] == 0 < inti and flag2 == 0:
+                if each2['voyage_id'] == each['voyage_id'] and each2['checkedin_couch'] == 0 <= inti and flag2 == 0:
                     each['starting_date'] = str(datetime.datetime(each2['added_date'].year , each2['added_date'].month , each2['added_date'].day, each2['added_date'].hour, each2['added_date'].minute, each2['added_date'].second)).replace('T', " ")
                     flag2 = 1
     return ls
@@ -107,7 +107,7 @@ def barData():
 # def barData(limit):
 #     return emb_data_bar(limit)
 def roundTime(dt):
-    round_mins = 30
+    round_mins = 60
     mins = dt.minute - (dt.minute % round_mins)
     return datetime.datetime(dt.year, dt.month, dt.day, dt.hour, mins)
     # return datetime.datetime(dt.year, dt.month, dt.day, dt.hour, mins).strftime("%H:%M")
@@ -163,66 +163,15 @@ def salil():
                 if dic['number'] == v:
                     dt = roundTime(dic['added_date'])
                     minMaxList.append(dt)
-                    # tmp['voyage_id'] = v
-
-                    # try:
-                    #     tmp['checkedin'] = dic['checkedin_couch'] - dicTmp[tmp_index]['checkedin']
-                    # except:
-                    #     tmp['checkedin'] = dic['checkedin_couch']
-
-                    # tmp['datetime'] = dt
-                    
                     try:
                         val = dic['checkedin_couch'] - ls[tmp_index-1].values()[0]
                     except:
                         val = dic['checkedin_couch']
 
                     unique_int[dt] = [val,v]
-
-                    
-                    # tmp['entry_time'] = dic['added_date']
-
-                    # dicTmp.append(tmp)
                     tmp_index +=1
             minMaxpership.append([min(minMaxList),max(minMaxList)])
             ls.append(unique_int)
-        
-        # for u in unique_int:
-        # fl = []
-        # for x, y in zip(ls,minMaxpership):
-        #     dic_time = list(x.items())
-        #     dateTimeRange = DateTimeRange(y[0], y[1])
-        #     for r in dateTimeRange.range(datetime.timedelta(minutes=30)):
-        #         for idx, (dkey,dval) in enumerate(dic_time):
-                    
-        #             tmpD = {}
-        #             tmpD['voyage_id'] = dval[1]
-        #             if dkey == r:
-                        
-        #                 dkey = dkey.strftime("%H:%M")
-        #                 tmpD['checkedin_time'] = dkey
-        #                 tmpD['onboard_time'] = dkey
-        #                 tmpD["actual_count"] = dval[0]
-
-        #                 if dval[0] != 0:
-        #                     try:
-        #                         dval[0] = dval[0] - dic_time[idx+1][1][0]
-        #                         dic_time[idx][1][0] = dval[0]
-        #                     except:
-        #                         pass
-        #                     tmpD['checkedin_couch'] = dval[0]
-        #                     tmpD['onboard_couch'] = dval[0]
-        #                     if dval[0] != 0:
-        #                         flag = True
-        #                         fl.append(tmpD)
-                    
-        # fl = sorted(fl, key=lambda i: i['checkedin_time'])
-        
-    #     filter[ship['code']] = fl
-    # return filter
-
-
-
 
         fl = []
         for x in ls:
@@ -242,7 +191,7 @@ def salil():
                 tmpD['voyage_id'] = dval[1]
 
                 dkey = dkey.strftime("%H:%M")
-                if checkDatetime > dkey:
+                if checkDatetime < dkey:
                     print('warning here', dval[1])
                 checkDatetime = dkey
 
@@ -269,3 +218,33 @@ def salil():
         fl = sorted(fl, key=lambda i: i['checkedin_time'])
         filter[ship['code']] = fl
     return filter
+
+@app.get('/barg/{limit}')
+def barg(limit: int):
+    ls = salil()
+    lst = []
+    for each in ls:
+        print(each)
+        for each1 in ls[each]:
+            flag = 0
+            avg_checkedin_couch = 0
+            avg_onboard_couch = 0
+            for eachTime in ls[each]:
+                if eachTime['checkedin_time'] == each1['checkedin_time'] and flag < limit:
+                    avg_checkedin_couch += eachTime['checkedin_couch']
+                    avg_onboard_couch += eachTime['onboard_couch']
+                    flag += 1
+            avg_checkedin_couch = int(avg_checkedin_couch/limit)
+            avg_onboard_couch = int(avg_onboard_couch/limit)
+            for eachTime in ls[each]:
+                if eachTime['checkedin_time'] == each1['checkedin_time']:
+                    if avg_onboard_couch < 0: 
+                        avg_onboard_couch = -1*avg_onboard_couch
+                    if avg_checkedin_couch < 0:
+                        avg_checkedin_couch = -1*avg_checkedin_couch
+                    eachTime['avg_checkedin_couch'] = avg_checkedin_couch
+                    eachTime['avg_onboard_couch'] = avg_onboard_couch
+                    eachTime['ship'] = each 
+                    lst.append(eachTime)
+    lst = sorted(lst, key=lambda i: i['checkedin_time'])
+    return lst
