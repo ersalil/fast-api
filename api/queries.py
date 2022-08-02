@@ -17,18 +17,13 @@ def emb_data(limit):
             WHERE
             es.voyage_id IN
             (
-                WITH CTE (rw, vid, eid, edate, sid, sname, scode) AS
+                WITH CTE (rw, vid) AS
                 (
                     SELECT
                         ROW_NUMBER() OVER ( PARTITION BY v.environment_id
                     ORDER BY
                         v.embark_date DESC) RN,
-                        v.voyage_id,
-                        v.environment_id,
-                        v.embark_date,
-                        s2.ship_id,
-                        s2."name",
-                        s2.code
+                        v.voyage_id
                     FROM
                         voyage v
                         JOIN

@@ -26,8 +26,8 @@
   },
   {
     "title": "CheckIn Time",
-    "dataIndex": "starting_date",
-    "key": "starting_date"
+    "dataIndex": "start_date",
+    "key": "start_date"
   },
   {
     "title": "OnBoard Time",
