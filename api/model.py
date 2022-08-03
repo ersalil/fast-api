@@ -1,8 +1,4 @@
-from sqlite3 import Timestamp
-from uuid import UUID
-from sqlalchemy import TIMESTAMP, Column, Integer, String, Boolean, Float, DateTime, ForeignKey
-from sqlalchemy.sql import func
-from sqlalchemy.orm import relationship
+from sqlalchemy import TIMESTAMP, Column, Integer, String, DateTime
 from database import Base
 
 class Embark(Base):

@@ -1,124 +1,87 @@
-from audioop import reverse
-from tabnanny import check
-from wsgiref.simple_server import demo_app
-from anyio import current_time
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import false, null
 from database import SessionLocal
-from sqlalchemy.sql import func, desc
-import database, datetime
-from queries import emb_data, emb_data_bar
-from data import testTableData, testLineData, testBarData, colModel
-from datetimerange import DateTimeRange
+import database
+import datetime
+from queries import emb_data
+from data import colModel
 
 f = '%Y-%m-%d %H:%M:%S'
 
 app = FastAPI()
 
-origins = ['http://localhost:3000', 'http://127.0.0.1:3000','https://d854-182-73-51-26.in.ngrok.io','https://28e8-182-73-51-26.in.ngrok.io']
+origins = ['http://localhost:3000', 'http://127.0.0.1:3000',
+           'https://d854-182-73-51-26.in.ngrok.io', 'https://28e8-182-73-51-26.in.ngrok.io']
 app.add_middleware(CORSMiddleware,
-allow_origins=origins,
-allow_credentials=True,
-allow_methods=['*'],
-allow_headers=['*']
-)
+                   allow_origins=origins,
+                   allow_credentiaresult=True,
+                   allow_methods=['*'],
+                   allow_headers=['*']
+                   )
 db = SessionLocal()
 
-@app.get('/s')
-def shipD():
+
+@app.get('/ship')
+def shipData():
     conn = database.engine.connect()
     result = conn.execute('SELECT ship.name, ship.code FROM ship')
-    ls = []
-    for r in result:
-        ls.append(dict(r))
-    return ls
+    result = []
+    for row in result:
+        result.append(dict(row))
+    return result
 
-@app.get('/e')
+
+@app.get('/embark/data')
 def embSummary():
     conn = database.engine.connect()
     result = conn.execute(emb_data(10))
-    ls = []
-    for r in result:
-        ls.append(dict(r))
-    return ls
+    result = []
+    for row in result:
+        result.append(dict(row))
+    return result
 
-# @app.get('/')
-# def main():
-#     es = embSummary()
-#     ships = shipD()
-#     for dic in es:
-#         for ship in ships:
-#             if(dic['code'] == ship['code']):
-#                 dic['name'] = ship['name']
-#                 break
-#     return es
 
 @app.get('/table/data')
 def tableView():
     es = embSummary()
-    ls = []
-    tempLs = []
-    for dictionary1 in es:
-        if dictionary1['number'] not in tempLs:
-            tempLs.append(dictionary1['number'])
-        
-    for each in tempLs:
-        # each['starting_date'] = current_time()
-        flag1 = 0
-        minFlag = 99999
-        minFlagOnBoard = 99999
-        # maxFlag = 0
-        temp = null
-        tmpDic = {}
-        for each1 in es:
-            if each1['number'] == each:
-                if flag1==0:
-                    tmpDic = each1
-                    flag1 = 1
-                
-                ## if we need end date as on board date
-                # if maxFlag < each1['checkedin_couch']:
-                #     maxFlag = each1['checkedin_couch']
-                #     tmpDic['end_date'] = str(datetime.datetime(each1['added_date'].year , each1['added_date'].month , each1['added_date'].day, each1['added_date'].hour, each1['added_date'].minute, each1['added_date'].second)).replace('T', " ")
+    result = []
+    voy_list = []
+    for row in es:
+        if row['number'] not in voy_list:
+            voy_list.append(row['number'])
+
+    for voyage in voy_list:
+        first_entry_check = 0
+        min_flag_checkin_count = 99999
+        min_flag_onboard_count = 99999
+        voy_dict = {}
+        for row in es:
+            if row['number'] == voyage:
+                if first_entry_check == 0:
+                    voy_dict = row
+                    first_entry_check = 1
+
+                # if we need end date as on board date
+                # if max_flag < row['checkedin_couch']:
+                #     max_flag = row['checkedin_couch']
+                #     voy_dict['end_date'] = str(datetime.datetime(row['added_date'].year , row['added_date'].month , row['added_date'].day, row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
                 #     # flag2 = 1
-                # temp = str(datetime.datetime(each1['added_date'].year , each1['added_date'].month , each1['added_date'].day, each1['added_date'].hour, each1['added_date'].minute, each1['added_date'].second)).replace('T', " ")
-                
-                ## else we need on board date
-                if minFlagOnBoard > each1['onboard_couch']:
-                    minFlagOnBoard = each1['onboard_couch']
-                    tmpDic['end_date'] = str(datetime.datetime(each1['added_date'].year , each1['added_date'].month , each1['added_date'].day, each1['added_date'].hour, each1['added_date'].minute, each1['added_date'].second)).replace('T', " ")
+                # temp = str(datetime.datetime(row['added_date'].year , row['added_date'].month , row['added_date'].day, row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
 
-                if minFlag > each1['checkedin_couch']:
-                    minFlag = each1['checkedin_couch']
-                    tmpDic['start_date'] = str(datetime.datetime(each1['added_date'].year , each1['added_date'].month , each1['added_date'].day, each1['added_date'].hour, each1['added_date'].minute, each1['added_date'].second)).replace('T', " ")
-                
-        if tmpDic != {}: ls.append(tmpDic)
+                # else we need on board date
+                if min_flag_onboard_count > row['onboard_couch']:
+                    min_flag_onboard_count = row['onboard_couch']
+                    voy_dict['end_date'] = str(datetime.datetime(row['added_date'].year, row['added_date'].month, row['added_date'].day,
+                                                                 row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
 
-            # flag1 = 1
+                if min_flag_checkin_count > row['checkedin_couch']:
+                    min_flag_checkin_count = row['checkedin_couch']
+                    voy_dict['start_date'] = str(datetime.datetime(row['added_date'].year, row['added_date'].month, row['added_date'].day,
+                                                                   row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
 
-
-
-            # for each1 in es:
-            #     if each1['voyage_id'] is each['voyage_id'] and each1['checkedin_couch'] <= inti and flag1 == 0:
-            #         each['end_date'] = str(datetime.datetime(each1['added_date'].year , each1['added_date'].month , each1['added_date'].day, each1['added_date'].hour, each1['added_date'].minute, each1['added_date'].second)).replace('T', " ")
-            #         # print("hello world   : ::: : ", each1['added_date'], each1['checkedin_couch'])
-            #         flag1 = 1
-
-            #     if each1['voyage_id'] is each['voyage_id'] and flag2 == 0:
-            #         if minFlag > each1['checkedin_couch']:
-            #             minFlag = each1['checkedin_couch']
-            #         each['starting_date'] = str(datetime.datetime(each1['added_date'].year , each1['added_date'].month , each1['added_date'].day, each1['added_date'].hour, each1['added_date'].minute, each1['added_date'].second)).replace('T', " ")
-            #         print("hello world ")
-            #         flag2 = 1
-            # // reverse loop to find the latest date
-            # for each2 in es:
-    return ls
-    
-
-@app.get('/ship/data')
-def shipData():
-    return testTableData
+        if voy_dict != {}:
+            result.append(voy_dict)
+    return result
 
 
 @app.get('/ship/col')
@@ -126,176 +89,116 @@ def shipCol():
     return colModel
 
 
-@app.get('/line/data')
-def lineData():
-    return testLineData
-
-
-@app.get('/bar/data')
-def barData():
-    return testBarData
-
-
-# @app.get('/bar/data/{limit}')
-# def barData(limit):
-#     return emb_data_bar(limit)
 def roundTime(dt):
     round_mins = 30
     mins = dt.minute - (dt.minute % round_mins)
     return datetime.datetime(dt.year, dt.month, dt.day, dt.hour, mins)
     # return datetime.datetime(dt.year, dt.month, dt.day, dt.hour, mins).strftime("%H:%M")
 
-# @app.get('/voy')
-# def voyage():
-#     conn = database.engine.connect()
-#     result = conn.execute(voyage_data())
-#     ls = []
-#     for r in result:
-#         ls.append(dict(r))
-#     return ls
-
-# @app.get('/t')
-# def st():
-#     vy = voyage()
-#     mainD = []
-#     for x in vy:   
-#         conn = database.engine.connect()
-#         tmpR = conn.execute(a(x['vid'], x['edate'],x['ddate']))
-#         mainD.append(tmpR)
-#     return mainD
-
-
-
-
-
-
-
-
-@app.get('/sa')
-def salil():
-    filter = {}
-    ships = shipD()
+@app.get('/lineGraph')
+def lineGraph():
+    result = {}
+    ships = ship_data()
     es = embSummary()
     for ship in ships:
-        value = []
-        for dic in es:
-            if dic['code'] == ship['code']:
-                value.append(dic['number'])
-        value = list(set(value))
-        ls = []
-        # minMaxpership = []
-        
-        for v in value:
-            # dicTmp = []
-            tmp_index= 0
-            unique_int = {}
-            # minMaxList = []
-            
-            for dic in es:
-                # tmp = {}
-                if dic['number'] == v:
-                    dt = roundTime(dic['added_date'])
-                    # minMaxList.append(dt)
-                    try:
-                        val = dic['checkedin_couch'] - ls[tmp_index-1].values()[0]
-                    except:
-                        val = dic['checkedin_couch']
-                    
-                    try:
-                        val2 = dic['onboard_couch'] - ls[tmp_index-1].values()[1]
-                    except:
-                        val2 = dic['onboard_couch']
+        ship_voy_list = []
+        for row in es:
+            if row['code'] == ship['code']:
+                ship_voy_list.append(row['number'])
+        ship_voy_list = list(set(ship_voy_list))
+        tmp_result = []
 
-                    unique_int[dt] = [val,val2,v]
-                    tmp_index +=1
-            # minMaxpership.append([min(minMaxList),max(minMaxList)])
-            ls.append(unique_int)
+        for voy_num in ship_voy_list:
+            tmp_index = 0
+            voy_data = {}
 
-        fl = []
-        for x in ls:
-            tmpDate = ''
-            tmpDatecount = -1
-            dic_time = list(x.items())
+            for row in es:
+                if row['number'] == voy_num:
+                    dt = roundTime(row['added_date'])
+                    try:
+                        chck_cnt = row['checkedin_couch'] - \
+                            tmp_result[tmp_index-1].values()[0]
+                    except:
+                        chck_cnt = row['checkedin_couch']
+
+                    try:
+                        onBrdCnt = row['onboard_couch'] - \
+                            tmp_result[tmp_index-1].values()[1]
+                    except:
+                        onBrdCnt = row['onboard_couch']
+
+                    voy_data[dt] = [chck_cnt, onBrdCnt, voy_num]
+                    tmp_index += 1
+            tmp_result.append(voy_data)
+
+        ship_data = []
+        for tmp_voy_data in tmp_result:
+            dict_time = list(tmp_voy_data.items())
             flag = False
-            checkDatetime = ''
-            for idx, (dkey,dval) in enumerate(dic_time):
-
-                # if checkDatetime == '': checkDatetime = dkey.strftime("%H:%M")
-                # if tmpDate != dkey.date():
-                #     tmpDate = dkey.date()
-                #     tmpDatecount+=1
-                #     print("upadte hua in ", tmpDatecount, '/t',dkey.date())
-                # print(":::::    ", tmpDatecount, '/t',dkey.date(), "    :::::")
-
-                tmpD = {}
-                tmpD['voyage_id'] = dval[2]
-
+            for idx, (dkey, dval) in enumerate(dict_time):
                 dkey = dkey.strftime("%H:%M")
-                # if checkDatetime < dkey:
-                #     print('warning here', dval[1])
-                # checkDatetime = dkey
 
-                # if tmpDatecount != 0:
-                #     tmpD['checkedin_time'] = str(tmpDatecount) + '+' + str(dkey)
-                #     print(tmpD['checkedin_time'])
-                # else:
-                #     tmpD['checkedin_time'] = dkey
-                
-                tmpD['checkedin_time'] = dkey
-                tmpD['onboard_time'] = dkey
-                tmpD["actual_count"] = dval[0]
+                interval_data = {}
+                interval_data['voyage_id'] = dval[2]
+                interval_data['checkedin_time'] = dkey
+                interval_data['onboard_time'] = dkey
+                interval_data["actual_count"] = dval[0]
+
                 if dval[1] != 0:
                     try:
-                        dval[1] = dval[1] - dic_time[idx+1][1][1]
-                        dic_time[idx][1][1] = dval[1]
+                        dval[1] = dval[1] - dict_time[idx+1][1][1]
+                        dict_time[idx][1][1] = dval[1]
                     except:
                         pass
-                    tmpD['onboard_couch'] = dval[1]
-                else: tmpD['onboard_couch'] = 0
+                    interval_data['onboard_couch'] = dval[1]
+                else:
+                    interval_data['onboard_couch'] = 0
 
                 if dval[0] != 0:
                     try:
-                        dval[0] = dval[0] - dic_time[idx+1][1][0]
-                        dic_time[idx][1][0] = dval[0]
+                        dval[0] = dval[0] - dict_time[idx+1][1][0]
+                        dict_time[idx][1][0] = dval[0]
                     except:
                         pass
-                    tmpD['checkedin_couch'] = dval[0]
-                else: tmpD['onboard_couch'] = 0
+                    interval_data['checkedin_couch'] = dval[0]
+                else:
+                    interval_data['onboard_couch'] = 0
 
-                if ( dval[0] != 0 or dval[1] != 0 ) or flag:
+                if (dval[0] != 0 or dval[1] != 0) or flag:
                     flag = True
-                    fl.append(tmpD)
+                    ship_data.append(interval_data)
 
-        fl = sorted(fl, key=lambda i: i['checkedin_time'])
-        filter[ship['code']] = fl
-    return filter
+        ship_data = sorted(ship_data, key=lambda i: i['checkedin_time'])
+        result[ship['code']] = ship_data
+    return result
+
 
 @app.get('/barg/{limit}')
 def barg(limit: int):
-    ls = salil()
-    lst = []
-    for each in ls:
-        print(each)
-        for each1 in ls[each]:
-            flag = 0
+    temp_result = lineGraph()
+    result = []
+    for each_dict in temp_result:
+        print(each_dict)
+        for row in temp_result[each_dict]:
+            count = 0
             avg_checkedin_couch = 0
             avg_onboard_couch = 0
-            for eachTime in ls[each]:
-                if eachTime['checkedin_time'] == each1['checkedin_time'] and flag < limit:
-                    avg_checkedin_couch += eachTime['checkedin_couch']
-                    avg_onboard_couch += eachTime['onboard_couch']
-                    flag += 1
+            for each_time in temp_result[each_dict]:
+                if each_time['checkedin_time'] == row['checkedin_time'] and count < limit:
+                    avg_checkedin_couch += each_time['checkedin_couch']
+                    avg_onboard_couch += each_time['onboard_couch']
+                    count += 1
             avg_checkedin_couch = int(avg_checkedin_couch/limit)
             avg_onboard_couch = int(avg_onboard_couch/limit)
-            for eachTime in ls[each]:
-                if eachTime['checkedin_time'] == each1['checkedin_time']:
-                    if avg_onboard_couch < 0: 
+            for each_time in temp_result[each_dict]:
+                if each_time['checkedin_time'] == row['checkedin_time']:
+                    if avg_onboard_couch < 0:
                         avg_onboard_couch = -1*avg_onboard_couch
                     if avg_checkedin_couch < 0:
                         avg_checkedin_couch = -1*avg_checkedin_couch
-                    eachTime['avg_checkedin_couch'] = avg_checkedin_couch
-                    eachTime['avg_onboard_couch'] = avg_onboard_couch
-                    eachTime['ship'] = each 
-                    lst.append(eachTime)
-    lst = sorted(lst, key=lambda i: i['checkedin_time'])
-    return lst
+                    each_time['avg_checkedin_couch'] = avg_checkedin_couch
+                    each_time['avg_onboard_couch'] = avg_onboard_couch
+                    each_time['ship'] = each_dict
+                    result.append(each_time)
+    result = sorted(result, key=lambda i: i['checkedin_time'])
+    return result
