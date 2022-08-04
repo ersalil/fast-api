@@ -6,39 +6,45 @@ import datetime
 from queries import emb_data
 from data import colModel
 
-f = '%Y-%m-%d %H:%M:%S'
+DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 app = FastAPI()
 
-origins = ['http://localhost:3000', 'http://127.0.0.1:3000',
-           'https://d854-182-73-51-26.in.ngrok.io', 'https://28e8-182-73-51-26.in.ngrok.io']
+# frontend_url in the config file
+origins = ['http://localhost:3000', 'http://127.0.0.1:3000']
 app.add_middleware(CORSMiddleware,
                    allow_origins=origins,
-                   allow_credentiaresult=True,
+                   allow_credentials=True,
                    allow_methods=['*'],
                    allow_headers=['*']
                    )
 db = SessionLocal()
 
+# get ship data
+
 
 @app.get('/ship')
 def shipData():
     conn = database.engine.connect()
-    result = conn.execute('SELECT ship.name, ship.code FROM ship')
+    data = conn.execute('SELECT ship.name, ship.code FROM ship')
     result = []
-    for row in result:
+    for row in data:
         result.append(dict(row))
     return result
+
+# get embarkation summary data
 
 
 @app.get('/embark/data')
 def embSummary():
     conn = database.engine.connect()
-    result = conn.execute(emb_data(10))
+    data = conn.execute(emb_data(10))
     result = []
-    for row in result:
+    for row in data:
         result.append(dict(row))
     return result
+
+# get table data
 
 
 @app.get('/table/data')
@@ -46,20 +52,27 @@ def tableView():
     es = embSummary()
     result = []
     voy_list = []
+
+    # get distinct voyage numbers
     for row in es:
         if row['number'] not in voy_list:
             voy_list.append(row['number'])
 
+    # find first checkin and onboard date for each voyage
     for voyage in voy_list:
-        first_entry_check = 0
+        first_entry_check = True
         min_flag_checkin_count = 99999
         min_flag_onboard_count = 99999
         voy_dict = {}
+
+        # matching all the embark summary data for each voyage
         for row in es:
             if row['number'] == voyage:
-                if first_entry_check == 0:
+
+                # to get latest es data for each voyage and skip the rest
+                if first_entry_check:
                     voy_dict = row
-                    first_entry_check = 1
+                    first_entry_check = False
 
                 # if we need end date as on board date
                 # if max_flag < row['checkedin_couch']:
@@ -69,24 +82,31 @@ def tableView():
                 # temp = str(datetime.datetime(row['added_date'].year , row['added_date'].month , row['added_date'].day, row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
 
                 # else we need on board date
+                # get minimum onboard count and it's respective date
                 if min_flag_onboard_count > row['onboard_couch']:
                     min_flag_onboard_count = row['onboard_couch']
                     voy_dict['end_date'] = str(datetime.datetime(row['added_date'].year, row['added_date'].month, row['added_date'].day,
                                                                  row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
 
+                # get minimum checkin count and it's respective date
                 if min_flag_checkin_count > row['checkedin_couch']:
                     min_flag_checkin_count = row['checkedin_couch']
                     voy_dict['start_date'] = str(datetime.datetime(row['added_date'].year, row['added_date'].month, row['added_date'].day,
                                                                    row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
 
+        # ignoring all the empty data
         if voy_dict != {}:
             result.append(voy_dict)
     return result
+
+# get table columns
 
 
 @app.get('/ship/col')
 def shipCol():
     return colModel
+
+# roundup time to it's 30 minutes floor value
 
 
 def roundTime(dt):
@@ -95,10 +115,13 @@ def roundTime(dt):
     return datetime.datetime(dt.year, dt.month, dt.day, dt.hour, mins)
     # return datetime.datetime(dt.year, dt.month, dt.day, dt.hour, mins).strftime("%H:%M")
 
-@app.get('/lineGraph')
+# get data for line graph
+
+
+@app.get('/linegraph')
 def lineGraph():
     result = {}
-    ships = ship_data()
+    ships = shipData()
     es = embSummary()
     for ship in ships:
         ship_voy_list = []
@@ -130,7 +153,8 @@ def lineGraph():
                     voy_data[dt] = [chck_cnt, onBrdCnt, voy_num]
                     tmp_index += 1
             tmp_result.append(voy_data)
-
+            # print(tmp_result)
+            # print("-----------------------------------------------------")
         ship_data = []
         for tmp_voy_data in tmp_result:
             dict_time = list(tmp_voy_data.items())
@@ -162,7 +186,7 @@ def lineGraph():
                         pass
                     interval_data['checkedin_couch'] = dval[0]
                 else:
-                    interval_data['onboard_couch'] = 0
+                    interval_data['checkedin_couch'] = 0
 
                 if (dval[0] != 0 or dval[1] != 0) or flag:
                     flag = True
@@ -172,13 +196,16 @@ def lineGraph():
         result[ship['code']] = ship_data
     return result
 
-
-@app.get('/barg/{limit}')
+# get data for bar graph
+@app.get('/bargraph/{limit}')
 def barg(limit: int):
+
+    # store result of line graph in a dict
     temp_result = lineGraph()
     result = []
+    # iterate over each ship
     for each_dict in temp_result:
-        print(each_dict)
+        # iterate over each voyage
         for row in temp_result[each_dict]:
             count = 0
             avg_checkedin_couch = 0

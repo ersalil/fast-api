@@ -1,3 +1,3 @@
 import json
 
-col = open('../colModel.json')
+colModel = json.load(open('../colModel.json'))
