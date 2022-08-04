@@ -8,15 +8,14 @@ from sqlalchemy import false, null
 from database import SessionLocal
 from sqlalchemy.sql import func, desc
 import database, datetime
-from queries import emb_data, emb_data_bar
-from data import testTableData, testLineData, testBarData, colModel
-from datetimerange import DateTimeRange
+from queries import emb_data
+from data import colModel
 
 f = '%Y-%m-%d %H:%M:%S'
 
 app = FastAPI()
 
-origins = ['http://localhost:3000', 'http://127.0.0.1:3000','https://d854-182-73-51-26.in.ngrok.io','https://28e8-182-73-51-26.in.ngrok.io']
+origins = ['http://localhost:3000', 'http://127.0.0.1:3000']
 app.add_middleware(CORSMiddleware,
 allow_origins=origins,
 allow_credentials=True,
@@ -42,17 +41,6 @@ def embSummary():
     for r in result:
         ls.append(dict(r))
     return ls
-
-# @app.get('/')
-# def main():
-#     es = embSummary()
-#     ships = shipD()
-#     for dic in es:
-#         for ship in ships:
-#             if(dic['code'] == ship['code']):
-#                 dic['name'] = ship['name']
-#                 break
-#     return es
 
 @app.get('/table/data')
 def tableView():
@@ -94,81 +82,18 @@ def tableView():
                     tmpDic['start_date'] = str(datetime.datetime(each1['added_date'].year , each1['added_date'].month , each1['added_date'].day, each1['added_date'].hour, each1['added_date'].minute, each1['added_date'].second)).replace('T', " ")
                 
         if tmpDic != {}: ls.append(tmpDic)
-
-            # flag1 = 1
-
-
-
-            # for each1 in es:
-            #     if each1['voyage_id'] is each['voyage_id'] and each1['checkedin_couch'] <= inti and flag1 == 0:
-            #         each['end_date'] = str(datetime.datetime(each1['added_date'].year , each1['added_date'].month , each1['added_date'].day, each1['added_date'].hour, each1['added_date'].minute, each1['added_date'].second)).replace('T', " ")
-            #         # print("hello world   : ::: : ", each1['added_date'], each1['checkedin_couch'])
-            #         flag1 = 1
-
-            #     if each1['voyage_id'] is each['voyage_id'] and flag2 == 0:
-            #         if minFlag > each1['checkedin_couch']:
-            #             minFlag = each1['checkedin_couch']
-            #         each['starting_date'] = str(datetime.datetime(each1['added_date'].year , each1['added_date'].month , each1['added_date'].day, each1['added_date'].hour, each1['added_date'].minute, each1['added_date'].second)).replace('T', " ")
-            #         print("hello world ")
-            #         flag2 = 1
-            # // reverse loop to find the latest date
-            # for each2 in es:
     return ls
     
-
-@app.get('/ship/data')
-def shipData():
-    return testTableData
-
 
 @app.get('/ship/col')
 def shipCol():
     return colModel
 
-
-@app.get('/line/data')
-def lineData():
-    return testLineData
-
-
-@app.get('/bar/data')
-def barData():
-    return testBarData
-
-
-# @app.get('/bar/data/{limit}')
-# def barData(limit):
-#     return emb_data_bar(limit)
 def roundTime(dt):
     round_mins = 30
     mins = dt.minute - (dt.minute % round_mins)
     return datetime.datetime(dt.year, dt.month, dt.day, dt.hour, mins)
     # return datetime.datetime(dt.year, dt.month, dt.day, dt.hour, mins).strftime("%H:%M")
-
-# @app.get('/voy')
-# def voyage():
-#     conn = database.engine.connect()
-#     result = conn.execute(voyage_data())
-#     ls = []
-#     for r in result:
-#         ls.append(dict(r))
-#     return ls
-
-# @app.get('/t')
-# def st():
-#     vy = voyage()
-#     mainD = []
-#     for x in vy:   
-#         conn = database.engine.connect()
-#         tmpR = conn.execute(a(x['vid'], x['edate'],x['ddate']))
-#         mainD.append(tmpR)
-#     return mainD
-
-
-
-
-
-
 
 
 @app.get('/sa')
@@ -219,28 +144,10 @@ def salil():
             flag = False
             checkDatetime = ''
             for idx, (dkey,dval) in enumerate(dic_time):
-
-                # if checkDatetime == '': checkDatetime = dkey.strftime("%H:%M")
-                # if tmpDate != dkey.date():
-                #     tmpDate = dkey.date()
-                #     tmpDatecount+=1
-                #     print("upadte hua in ", tmpDatecount, '/t',dkey.date())
-                # print(":::::    ", tmpDatecount, '/t',dkey.date(), "    :::::")
-
                 tmpD = {}
                 tmpD['voyage_id'] = dval[2]
 
                 dkey = dkey.strftime("%H:%M")
-                # if checkDatetime < dkey:
-                #     print('warning here', dval[1])
-                # checkDatetime = dkey
-
-                # if tmpDatecount != 0:
-                #     tmpD['checkedin_time'] = str(tmpDatecount) + '+' + str(dkey)
-                #     print(tmpD['checkedin_time'])
-                # else:
-                #     tmpD['checkedin_time'] = dkey
-                
                 tmpD['checkedin_time'] = dkey
                 tmpD['onboard_time'] = dkey
                 tmpD["actual_count"] = dval[0]
