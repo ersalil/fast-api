@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  app:
+    build: 
+      context: .
+    volumes:
+      - .:/fast_api
+    ports:
+      - 28000:8000
+    image: fastapi
+    container_name: fastapi_container

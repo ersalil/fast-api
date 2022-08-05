@@ -11,7 +11,7 @@ DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 app = FastAPI()
 
 # frontend_url in the config file
-origins = ['http://localhost:3000', 'http://127.0.0.1:3000']
+origins = ['http://localhost:23000', 'http://127.0.0.1:23000',"*"]
 app.add_middleware(CORSMiddleware,
                    allow_origins=origins,
                    allow_credentials=True,
@@ -139,18 +139,18 @@ def lineGraph():
                 if row['number'] == voy_num:
                     dt = roundTime(row['added_date'])
                     try:
-                        chck_cnt = row['checkedin_couch'] - \
+                        checkedin_count = row['checkedin_couch'] - \
                             tmp_result[tmp_index-1].values()[0]
                     except:
-                        chck_cnt = row['checkedin_couch']
+                        checkedin_count = row['checkedin_couch']
 
                     try:
-                        onBrdCnt = row['onboard_couch'] - \
+                        onboard_count = row['onboard_couch'] - \
                             tmp_result[tmp_index-1].values()[1]
                     except:
-                        onBrdCnt = row['onboard_couch']
+                        onboard_count = row['onboard_couch']
 
-                    voy_data[dt] = [chck_cnt, onBrdCnt, voy_num]
+                    voy_data[dt] = [checkedin_count, onboard_count, voy_num]
                     tmp_index += 1
             tmp_result.append(voy_data)
             # print(tmp_result)
