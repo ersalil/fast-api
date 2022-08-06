@@ -1,3 +1,4 @@
+
 def emb_data(limit):
     return f"""SELECT
             es.voyage_id,
@@ -46,7 +47,7 @@ def emb_data(limit):
                             e.ship_id IS NOT NULL
                         )
                         AND v.embark_date < NOW()
-                        
+
                 )
                 SELECT
                     cte.vid
@@ -112,15 +113,15 @@ def emb_data_bar(limit):
                                 ON e.ship_id = s.ship_id
                         WHERE
                             e.ship_id IS NOT NULL
-                        ) 
+                        )
                         AND v.embark_date < (
-                        SELECT 
-                            es.added_date 
-                        FROM 
-                            embark_summary es 
-                        ORDER BY 
-                            es.added_date DESC 
-                        LIMIT 
+                        SELECT
+                            es.added_date
+                        FROM
+                            embark_summary es
+                        ORDER BY
+                            es.added_date DESC
+                        LIMIT
                             1
                         )
                 )
@@ -146,16 +147,16 @@ Select cte.vid, cte.edate, cte.ddate from cte where rw <=10"""
 
 
 def a(vid, start, end):
-    return f"""select es2.voyage_id , es2.added_date , es2.checkedin_couch , es2.onboard_couch , v."number" 
+    return f"""select es2.voyage_id , es2.added_date , es2.checkedin_couch , es2.onboard_couch , v."number"
                 from embark_summary es2  join voyage v on v.voyage_id = es2.voyage_id where es2.added_date in
                     (
-                    select 
-                        (   
+                    select
+                        (
                             select max(added_date)::timestamp
                             from embark_summary es
                             where voyage_id = '{vid}'
                             and (added_date between x::timestamp and (x::timestamp +'30 minute'::interval))
                         )
                     from generate_series(timestamp '{start}' , timestamp '{end}' , interval  '30 min') t(x)
-                    ) 
+                    )
                 order by v."number" """

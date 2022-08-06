@@ -11,7 +11,7 @@ DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 app = FastAPI()
 
 # frontend_url in the config file
-origins = ['http://localhost:23000', 'http://127.0.0.1:23000',"*"]
+origins = ['http://localhost:28000', 'http://127.0.0.1:28000',"*"]
 app.add_middleware(CORSMiddleware,
                    allow_origins=origins,
                    allow_credentials=True,
