@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from database import SessionLocal
 import database
 import datetime
-from queries import emb_data
+from queries import emb_data, getAppLimit
 from data import colModel
 
 DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
@@ -229,3 +229,13 @@ def barg(limit: int):
                     result.append(each_time)
     result = sorted(result, key=lambda i: i['checkedin_time'])
     return result
+
+
+def limit():
+    query = getAppLimit()
+    conn = database.engine.connect()
+    data = list(conn.execute(query))
+    result = data[0][0]
+    print(result)
+
+limit()

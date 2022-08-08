@@ -145,6 +145,8 @@ def voyage_data():
     )
 Select cte.vid, cte.edate, cte.ddate from cte where rw <=10"""
 
+def getAppLimit():
+    return f"""select value from application_setting where application_setting_id = 'da1dfaf2-1989-4071-b01c-47ad2a6b559a'"""
 
 def a(vid, start, end):
     return f"""select es2.voyage_id , es2.added_date , es2.checkedin_couch , es2.onboard_couch , v."number"
