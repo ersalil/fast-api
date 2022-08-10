@@ -7,12 +7,6 @@ Embarkation Manifest. 🚀
 
 You can **Analyse Embarkation Manifest**.
 
-## Users
-
-You will be able to:
-
-* **Create users** (_not implemented_).
-* **Read users** (_not implemented_).
 """
 
 tags_metadata = [
