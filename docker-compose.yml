@@ -9,3 +9,4 @@ services:
       - ENGINE=${ENGINE}
     image: ${IMAGE_NAME}
     container_name: ${CONTAINER_NAME}
+    restart: unless-stopped
