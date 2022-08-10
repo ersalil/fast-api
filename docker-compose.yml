@@ -7,5 +7,5 @@ services:
       - 28000:8000
     environment:
       - ENGINE=${ENGINE}
-    image: ${IMAGE}
+    image: ${IMAGE_NAME}
     container_name: ${CONTAINER_NAME}

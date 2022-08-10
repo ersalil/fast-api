@@ -1,14 +1,15 @@
+
 from fastapi import FastAPI, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from resources.docs import title, description, tags_metadata
-from api import router
+from api import router, lookup
 
 import logging
 
 app = FastAPI(title=title, description=description, openapi_tags=tags_metadata, docs_url="/api/docs")
 
 # frontend_url in the config file
-origins = ['http://localhost:3000', 'http://127.0.0.1:3000',"*"]
+origins = ['http://localhost:23000', 'http://127.0.0.1:23000', 'http://localhost:3000', 'http://127.0.0.1:3000',"*"]
 
 app.add_middleware(CORSMiddleware,
                     allow_origins=origins,
@@ -18,6 +19,7 @@ app.add_middleware(CORSMiddleware,
                     )
 
 app.include_router(router)
+app.include_router(lookup)
 
 @app.get('/')
 def root():

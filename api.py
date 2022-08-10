@@ -1,13 +1,14 @@
 from db.sql import app_setting, ship_data, embarkData
 from db.database import executeSQL
 from fastapi import Depends, HTTPException
-import datetime
+import datetime, json
 
 from fastapi import APIRouter
 
 DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 router = APIRouter(prefix='/data')
+lookup = APIRouter(prefix='/model')
 
 limit = 10
 
@@ -16,6 +17,11 @@ def appSetting():
     limit = int(executeSQL(app_setting)[0]['value'])
 
 appSetting()
+
+@lookup.get('/table')
+def tableModel():
+    colModel = json.load(open('./resources/colModel.json'))
+    return colModel
 
 @router.get('/ship', tags=['ship'])
 def shipsData():
