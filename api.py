@@ -18,7 +18,7 @@ def appSetting():
 
 appSetting()
 
-@lookup.get('/table')
+@lookup.get('/table', tags=['model'])
 def tableModel():
     colModel = json.load(open('./resources/colModel.json'))
     return colModel
