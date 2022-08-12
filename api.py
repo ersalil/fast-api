@@ -46,12 +46,14 @@ def embSummary():
 
 # get table data
 @router.get('/overview', tags=['ship'])
-def voyOverview(es=Depends(embSummary)):
+def voyOverview():
+    es = embSummary()
     if es == [] or es == None:
         raise HTTPException(status_code=400, detail="Data can't be found")
     result = []
     voy_list = []
     # get distinct voyage numbers
+    es = list(es)
     for row in es:
         if row['number'] not in voy_list:
             voy_list.append(row['number'])
@@ -97,6 +99,7 @@ def voyOverview(es=Depends(embSummary)):
             result.append(voy_dict)
         if result == []:
             raise HTTPException(status_code=400, detail="Data can't be found")
+    print(result)
     return result
 
 
