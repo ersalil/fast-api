@@ -191,6 +191,8 @@ def voyageData():
                     flag = True
                     ship_data.append(interval_data)
 
+        ship_data = sorted(ship_data, key=lambda i: i['voyage_id'])
+
         ship_data = sorted(ship_data, key=lambda i: i['checkedin_time'])
         result[ship['code']] = ship_data
     return result
