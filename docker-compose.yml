@@ -6,6 +6,7 @@ services:
     ports:
       - 28000:8000
     environment:
-      - ENGINE=${ENGINE}
-    image: ${IMAGE_NAME}
-    container_name: ${CONTAINER_NAME}
+      - ENGINE=postgresql://sreintern:TxSyHPDoaw44396z@34.135.5.178/sreinsights_dcl
+    image: sre-embarkation-manifest-backend:1.2.0
+    container_name: sre-embarkation-manifest-backend
+    restart: unless-stopped
