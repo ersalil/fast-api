@@ -9,7 +9,7 @@ import logging
 app = FastAPI(title=title, description=description, openapi_tags=tags_metadata, docs_url="/api/docs")
 
 # frontend_url in the config file
-origins = ['http://localhost:23000', 'http://127.0.0.1:23000', 'http://localhost:3000', 'http://127.0.0.1:3000',"*"]
+origins = ['http://localhost:23000', 'http://127.0.0.1:23000', 'http://localhost:3000', 'http://127.0.0.1:3000',"http://app.embarkation-analytics.sreinsights.com","http://app.embarkation-analytics.sreinsights.com:80"]
 
 app.add_middleware(CORSMiddleware,
                     allow_origins=origins,
