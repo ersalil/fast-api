@@ -24,7 +24,7 @@ app.include_router(lookup)
 
 @app.get('/')
 def root():
-    return {"version": "1.2.0",
+    return {"version": "1.3.0",
             "port": "8000",
             "health": "green",
             "name": "sre-embarkation-manifest-backend"

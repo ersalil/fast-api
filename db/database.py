@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 import os
 
 # create engine
-engine = create_engine("postgresql://sreintern:TxSyHPDoaw44396z@34.135.5.178/sreinsights_dcl")
+engine = create_engine(os.getenv("ENGINE"))
 
 # create base class
 Base  = declarative_base()
