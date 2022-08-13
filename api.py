@@ -1,6 +1,6 @@
 from db.crud import getEmbarkationSummary, getLimit, getShip
 from db.database import get_db
-from fastapi import Depends, HTTPException
+from fastapi import Depends, HTTPException, status
 import datetime, json
 from sqlalchemy.orm import Session
 from model import models, schemas
@@ -16,19 +16,23 @@ lookup = APIRouter(prefix='/model')
 setting = Settings()
 limit = setting.limit
 
+msg = "Somthing went wrong"
 
-@lookup.get('/table', tags=['model'])
+@lookup.get('/table', tags=['model'], status_code=200)
 async def tableModel():
-    colModel = json.load(open('./resources/colModel.json'))
+    try:
+        colModel = json.load(open('./resources/colModel.json'))
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Message: {msg}, Traceback: {e}")
     return colModel
 
-@router.get('/ship', tags=['ship'])
+@router.get('/ship', tags=['ship'], status_code=200)
 async def shipsData(db: Session = Depends(get_db)):
     return await getShip(db)
 
 
 # get embarkation summary data
-@router.get('/embark', tags=['ship'])
+@router.get('/embark', tags=['ship'], status_code=200)
 async def embSummary(db: Session = Depends(get_db)):
     return await getEmbarkationSummary(db, limit)
     
@@ -37,8 +41,6 @@ async def embSummary(db: Session = Depends(get_db)):
 @router.get('/overview', tags=['ship'])
 def voyOverview(db: Session = Depends(get_db)):
     es = getEmbarkationSummary(db, limit)
-    if es == [] or es == None:
-        raise HTTPException(status_code=400, detail="Data can't be found")
     result = []
     voy_list = []
     # get distinct voyage numbers
@@ -86,8 +88,6 @@ def voyOverview(db: Session = Depends(get_db)):
         # ignoring all the empty data
         if voy_dict != {}:
             result.append(voy_dict)
-        if result == []:
-            raise HTTPException(status_code=400, detail="Data can't be found")
     print(result)
     return result
 
