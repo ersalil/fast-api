@@ -1,3 +1,4 @@
+from email.mime import application
 from sqlalchemy import TIMESTAMP, Column, Integer, String, DateTime
 from db.database import Base
 
@@ -28,3 +29,10 @@ class Voyage(Base):
     environment_id = Column(String)
     embark_date = Column(DateTime)
     added_date = Column(TIMESTAMP, primary_key=True)
+
+class ApplicationSetting(Base):
+    __tablename__ = 'application_setting'
+    application_setting_id = Column(String, primary_key=True)
+    name = Column(String)
+    value = Column(Integer)
+    description = Column(String)

@@ -4,23 +4,18 @@ from sqlalchemy.orm import sessionmaker
 import os
 
 # create engine
-engine = create_engine(os.getenv("ENGINE"))
+engine = create_engine("postgresql://sreintern:TxSyHPDoaw44396z@34.135.5.178/sreinsights_dcl")
 
 # create base class
 Base  = declarative_base()
 
 # create session
-SessionLocal = sessionmaker(bind=engine)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-db = SessionLocal()
-
-def executeSQL(sql):
-    """
-    Execute SQL query and return result
-    """
-    conn = engine.connect()
-    data = conn.execute(sql)
-    result = []
-    for row in data:
-        result.append(dict(row))
-    return result
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

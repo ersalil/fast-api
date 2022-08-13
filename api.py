@@ -1,52 +1,42 @@
-from db.sql import app_setting, ship_data, embarkData
-from db.database import executeSQL
+from db.crud import getEmbarkationSummary, getLimit, getShip
+from db.database import get_db
 from fastapi import Depends, HTTPException
 import datetime, json
-
+from sqlalchemy.orm import Session
+from model import models, schemas
+from settings import Settings
+import asyncio
 from fastapi import APIRouter
 
 DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 router = APIRouter(prefix='/data')
 lookup = APIRouter(prefix='/model')
+# limit = 10
+setting = Settings()
+limit = setting.limit
 
-limit = 10
-
-def appSetting():
-    global limit 
-    limit = int(executeSQL(app_setting)[0]['value'])
-
-appSetting()
 
 @lookup.get('/table', tags=['model'])
-def tableModel():
+async def tableModel():
     colModel = json.load(open('./resources/colModel.json'))
     return colModel
 
 @router.get('/ship', tags=['ship'])
-def shipsData():
-    data = executeSQL(ship_data)
-    print(data)
-    if data is None:
-        raise HTTPException(status_code=404, detail='Ship data not found')
-    return data
+async def shipsData(db: Session = Depends(get_db)):
+    return await getShip(db)
 
 
 # get embarkation summary data
 @router.get('/embark', tags=['ship'])
-def embSummary():
-    global limit
-    if limit == None:
-        raise HTTPException(status_code=500, detail='Application setting not found')
-    data = executeSQL(embarkData(limit))
-    if data is None:
-        raise HTTPException(status_code=404, detail='Embarkation data not found')
-    return data
+async def embSummary(db: Session = Depends(get_db)):
+    return await getEmbarkationSummary(db, limit)
     
 
 # get table data
 @router.get('/overview', tags=['ship'])
-def voyOverview(es=Depends(embSummary)):
+def voyOverview(db: Session = Depends(get_db)):
+    es = getEmbarkationSummary(db, limit)
     if es == [] or es == None:
         raise HTTPException(status_code=400, detail="Data can't be found")
     result = []
@@ -112,10 +102,10 @@ def roundTime(dt):
 
 # get data for line graph
 @router.get('/voyage', tags=['ship'])
-def voyageData():
+def voyageData(db: Session = Depends(get_db)):
     result = {}
-    es = embSummary()
-    ships = shipsData()
+    es = getEmbarkationSummary(db, limit)
+    ships = getShip(db)
     if ships == [] or ships == None:
         raise HTTPException(status_code=400, detail="Data can't be found")
     if es == [] or es == None:
@@ -199,9 +189,9 @@ def voyageData():
 
 # get data for bar graph
 @router.get('/avg/voyage', tags=['ship'])
-def avgVoyageData():
+def avgVoyageData(db: Session = Depends(get_db)):
     global limit
-    temp_result = voyageData()
+    temp_result = voyageData(db)
     if limit == None:
         raise HTTPException(status_code=500, detail='Application setting not found')
     # store result of line graph in a dictionary and then sort it by date 

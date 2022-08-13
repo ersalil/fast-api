@@ -3,6 +3,7 @@ from fastapi import FastAPI, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from resources.docs import title, description, tags_metadata
 from api import router, lookup
+from db.database import SessionLocal
 
 import logging
 

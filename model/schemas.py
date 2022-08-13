@@ -36,3 +36,11 @@ class Voyage(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class ApplicationSetting(BaseModel):
+    application_setting_id: str
+    value: int
+
+    class Config:
+        orm_mode = True
