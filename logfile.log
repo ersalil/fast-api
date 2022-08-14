@@ -38,3 +38,22 @@
 2022-08-14 19:22:20,894 - DEBUG - 9bcdea17-2d63-4d8f-8e95-794a345c2c1d - Client Connected
 2022-08-14 19:22:20,894 - DEBUG - 9bcdea17-2d63-4d8f-8e95-794a345c2c1d - http://127.0.0.1:8000/stream-logs : Request ended
 2022-08-14 19:22:25,468 - DEBUG - 9bcdea17-2d63-4d8f-8e95-794a345c2c1d - Client disconnected
+2022-08-14 19:26:18,363 - INFO - Logger initialized
+2022-08-14 19:26:18,364 - INFO - None - Voyages for each ship is - 10
+2022-08-14 19:27:16,474 - DEBUG - 32560612-2f6a-49c3-8630-5fc138c4f415 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:27:16,482 - DEBUG - 32560612-2f6a-49c3-8630-5fc138c4f415 - Client Connected
+2022-08-14 19:27:16,482 - DEBUG - 32560612-2f6a-49c3-8630-5fc138c4f415 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:27:24,588 - DEBUG - 32560612-2f6a-49c3-8630-5fc138c4f415 - Client disconnected
+2022-08-14 19:27:56,166 - INFO - Logger initialized
+2022-08-14 19:27:56,166 - INFO - None - Voyages for each ship is - 10
+2022-08-14 19:27:59,706 - DEBUG - f65e6dfd-b189-486e-acea-93138186b721 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:27:59,714 - DEBUG - f65e6dfd-b189-486e-acea-93138186b721 - Client Connected
+2022-08-14 19:27:59,714 - DEBUG - f65e6dfd-b189-486e-acea-93138186b721 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:42:18,519 - DEBUG - bccd9415-2937-4f25-a1aa-58831d23d0b5 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-14 19:42:18,520 - DEBUG - bccd9415-2937-4f25-a1aa-58831d23d0b5 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-14 19:42:19,057 - DEBUG - 9b4a213b-2108-4e8f-906c-6db7bd08a17b - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-14 19:42:19,060 - DEBUG - 9b4a213b-2108-4e8f-906c-6db7bd08a17b - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-14 19:42:22,256 - DEBUG - 27115aac-9350-4a1f-b688-7dbf4ae40cd5 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-14 19:42:22,256 - DEBUG - 27115aac-9350-4a1f-b688-7dbf4ae40cd5 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-14 19:42:22,365 - DEBUG - 9c45be2b-17fe-4869-8524-6545e3a394a2 - http://127.0.0.1:8000/favicon.ico : Request started
+2022-08-14 19:42:22,365 - DEBUG - 9c45be2b-17fe-4869-8524-6545e3a394a2 - http://127.0.0.1:8000/favicon.ico : Request ended
