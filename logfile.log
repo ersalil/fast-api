@@ -38,3 +38,130 @@
 2022-08-14 19:22:20,894 - DEBUG - 9bcdea17-2d63-4d8f-8e95-794a345c2c1d - Client Connected
 2022-08-14 19:22:20,894 - DEBUG - 9bcdea17-2d63-4d8f-8e95-794a345c2c1d - http://127.0.0.1:8000/stream-logs : Request ended
 2022-08-14 19:22:25,468 - DEBUG - 9bcdea17-2d63-4d8f-8e95-794a345c2c1d - Client disconnected
+2022-08-14 19:41:34,057 - INFO - Logger initialized
+2022-08-14 19:41:34,057 - INFO - None - Voyages for each ship is - 10
+2022-08-14 19:41:37,277 - DEBUG - daa2de82-0ecd-45b1-8a6f-fd098efaa4f1 - http://127.0.0.1:8000/ : Request started
+2022-08-14 19:41:37,278 - DEBUG - daa2de82-0ecd-45b1-8a6f-fd098efaa4f1 - http://127.0.0.1:8000/ : Request ended
+2022-08-14 19:41:37,403 - DEBUG - c5251751-c2f2-4bd2-86fc-7a27b9a4f948 - http://127.0.0.1:8000/images/icons/gear.png : Request started
+2022-08-14 19:41:37,404 - DEBUG - c5251751-c2f2-4bd2-86fc-7a27b9a4f948 - http://127.0.0.1:8000/images/icons/gear.png : Request ended
+2022-08-14 19:41:43,217 - DEBUG - c3f5889a-5053-4ba5-bff7-5e5d9b6cba88 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-14 19:41:43,218 - DEBUG - c3f5889a-5053-4ba5-bff7-5e5d9b6cba88 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-14 19:41:43,330 - DEBUG - 1494eac6-197f-4ce0-8676-8a17d21b1a2b - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-14 19:41:43,609 - DEBUG - 1494eac6-197f-4ce0-8676-8a17d21b1a2b - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-14 19:41:52,593 - DEBUG - 50cd3554-34d9-4d2c-a462-661c8b6c2567 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:41:52,600 - DEBUG - 50cd3554-34d9-4d2c-a462-661c8b6c2567 - Client Connected
+2022-08-14 19:41:52,600 - DEBUG - 50cd3554-34d9-4d2c-a462-661c8b6c2567 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:42:50,875 - DEBUG - f15276d5-6830-470e-9bc2-44d8b0391c30 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:42:50,886 - DEBUG - f15276d5-6830-470e-9bc2-44d8b0391c30 - Client Connected
+2022-08-14 19:42:50,886 - DEBUG - f15276d5-6830-470e-9bc2-44d8b0391c30 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:35,000 - DEBUG - 1cabf854-fc44-49eb-a069-0675ef13252c - http://localhost:8000/api/docs : Request started
+2022-08-14 19:43:35,000 - DEBUG - 1cabf854-fc44-49eb-a069-0675ef13252c - http://localhost:8000/api/docs : Request ended
+2022-08-14 19:43:35,203 - DEBUG - c3501d10-a9b2-4b62-9295-a4ac886daa6c - http://localhost:8000/openapi.json : Request started
+2022-08-14 19:43:35,203 - DEBUG - c3501d10-a9b2-4b62-9295-a4ac886daa6c - http://localhost:8000/openapi.json : Request ended
+2022-08-14 19:43:38,528 - DEBUG - 6ff06c08-63a4-4bc6-ae7a-e397d21510d7 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:38,535 - DEBUG - 6ff06c08-63a4-4bc6-ae7a-e397d21510d7 - Client Connected
+2022-08-14 19:43:38,535 - DEBUG - 6ff06c08-63a4-4bc6-ae7a-e397d21510d7 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:48,021 - DEBUG - 5aee409f-88fa-4563-bc92-fcba4249b589 - http://localhost:8000/data/ship : Request started
+2022-08-14 19:43:48,574 - DEBUG - 5aee409f-88fa-4563-bc92-fcba4249b589 - http://localhost:8000/data/ship : Request ended
+2022-08-14 19:43:53,006 - DEBUG - d7bea2c9-f842-4638-b091-c0bb3530034b - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:53,011 - DEBUG - d7bea2c9-f842-4638-b091-c0bb3530034b - Client Connected
+2022-08-14 19:43:53,012 - DEBUG - d7bea2c9-f842-4638-b091-c0bb3530034b - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:53,901 - DEBUG - 3e879dc6-d9ad-4689-a46f-cdca6e3a826c - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:53,907 - DEBUG - 3e879dc6-d9ad-4689-a46f-cdca6e3a826c - Client Connected
+2022-08-14 19:43:53,907 - DEBUG - 3e879dc6-d9ad-4689-a46f-cdca6e3a826c - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:54,441 - DEBUG - fc3070f1-d4bd-4ba9-ab60-1f1f536e225c - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:54,447 - DEBUG - fc3070f1-d4bd-4ba9-ab60-1f1f536e225c - Client Connected
+2022-08-14 19:43:54,447 - DEBUG - fc3070f1-d4bd-4ba9-ab60-1f1f536e225c - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:54,859 - DEBUG - facd6f82-02cb-4783-b489-89c0db369736 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:54,865 - DEBUG - facd6f82-02cb-4783-b489-89c0db369736 - Client Connected
+2022-08-14 19:43:54,865 - DEBUG - facd6f82-02cb-4783-b489-89c0db369736 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:55,234 - DEBUG - a6e43f8c-411f-481c-8b21-2c848af5d7be - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:55,240 - DEBUG - a6e43f8c-411f-481c-8b21-2c848af5d7be - Client Connected
+2022-08-14 19:43:55,240 - DEBUG - a6e43f8c-411f-481c-8b21-2c848af5d7be - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:55,628 - DEBUG - 93042e09-555e-421c-a870-cfbb94960d59 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:55,635 - DEBUG - 93042e09-555e-421c-a870-cfbb94960d59 - Client Connected
+2022-08-14 19:43:55,635 - DEBUG - 93042e09-555e-421c-a870-cfbb94960d59 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:55,993 - DEBUG - 969f4431-a72b-42b3-a180-a9d11e77d4fc - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:55,999 - DEBUG - 969f4431-a72b-42b3-a180-a9d11e77d4fc - Client Connected
+2022-08-14 19:43:55,999 - DEBUG - 969f4431-a72b-42b3-a180-a9d11e77d4fc - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:56,298 - DEBUG - dce3ee84-8dcd-41bb-8a04-12f2458f331a - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:56,305 - DEBUG - dce3ee84-8dcd-41bb-8a04-12f2458f331a - Client Connected
+2022-08-14 19:43:56,305 - DEBUG - dce3ee84-8dcd-41bb-8a04-12f2458f331a - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:56,605 - DEBUG - 7f165da6-c4b8-424e-bc16-d52d603d7872 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:56,611 - DEBUG - 7f165da6-c4b8-424e-bc16-d52d603d7872 - Client Connected
+2022-08-14 19:43:56,611 - DEBUG - 7f165da6-c4b8-424e-bc16-d52d603d7872 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:56,909 - DEBUG - 8cc0de58-e300-497f-a949-ae2667a94309 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:56,914 - DEBUG - 8cc0de58-e300-497f-a949-ae2667a94309 - Client Connected
+2022-08-14 19:43:56,915 - DEBUG - 8cc0de58-e300-497f-a949-ae2667a94309 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:57,303 - DEBUG - 88eeeac3-b32a-48c2-84c0-ee21ba194d0d - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:57,309 - DEBUG - 88eeeac3-b32a-48c2-84c0-ee21ba194d0d - Client Connected
+2022-08-14 19:43:57,309 - DEBUG - 88eeeac3-b32a-48c2-84c0-ee21ba194d0d - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:57,603 - DEBUG - a31200e0-7943-44b8-9307-47d62c3040c8 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:57,609 - DEBUG - a31200e0-7943-44b8-9307-47d62c3040c8 - Client Connected
+2022-08-14 19:43:57,609 - DEBUG - a31200e0-7943-44b8-9307-47d62c3040c8 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:57,843 - DEBUG - 7a290509-65e5-4c78-b195-8ebe45ad7c86 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:57,849 - DEBUG - 7a290509-65e5-4c78-b195-8ebe45ad7c86 - Client Connected
+2022-08-14 19:43:57,849 - DEBUG - 7a290509-65e5-4c78-b195-8ebe45ad7c86 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:58,086 - DEBUG - 5b479357-5ede-426f-8690-916edc005b4e - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:58,092 - DEBUG - 5b479357-5ede-426f-8690-916edc005b4e - Client Connected
+2022-08-14 19:43:58,092 - DEBUG - 5b479357-5ede-426f-8690-916edc005b4e - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:58,311 - DEBUG - 2fc59e2d-325f-4d77-9878-5a34e1dd4dfb - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:58,317 - DEBUG - 2fc59e2d-325f-4d77-9878-5a34e1dd4dfb - Client Connected
+2022-08-14 19:43:58,317 - DEBUG - 2fc59e2d-325f-4d77-9878-5a34e1dd4dfb - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:58,549 - DEBUG - 4440cc2f-3401-491c-a1be-554e6c26c87c - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:58,555 - DEBUG - 4440cc2f-3401-491c-a1be-554e6c26c87c - Client Connected
+2022-08-14 19:43:58,555 - DEBUG - 4440cc2f-3401-491c-a1be-554e6c26c87c - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:58,743 - DEBUG - c7e2c2de-cfb2-445c-9da5-b00aa6e47be6 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:58,748 - DEBUG - c7e2c2de-cfb2-445c-9da5-b00aa6e47be6 - Client Connected
+2022-08-14 19:43:58,749 - DEBUG - c7e2c2de-cfb2-445c-9da5-b00aa6e47be6 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:58,953 - DEBUG - 2d20e0d6-0bcd-4ae6-8a02-bb5ab47c5edf - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:58,958 - DEBUG - 2d20e0d6-0bcd-4ae6-8a02-bb5ab47c5edf - Client Connected
+2022-08-14 19:43:58,959 - DEBUG - 2d20e0d6-0bcd-4ae6-8a02-bb5ab47c5edf - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:59,136 - DEBUG - 1024a17f-37fc-4f48-a6d0-9a5c2d666d92 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:59,142 - DEBUG - 1024a17f-37fc-4f48-a6d0-9a5c2d666d92 - Client Connected
+2022-08-14 19:43:59,142 - DEBUG - 1024a17f-37fc-4f48-a6d0-9a5c2d666d92 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:59,337 - DEBUG - 240da2a8-6793-431b-b828-55f7d3c18958 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:59,342 - DEBUG - 240da2a8-6793-431b-b828-55f7d3c18958 - Client Connected
+2022-08-14 19:43:59,343 - DEBUG - 240da2a8-6793-431b-b828-55f7d3c18958 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:59,525 - DEBUG - f19ad637-abd2-4e2f-bcb4-e3b3230d4a5d - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:59,530 - DEBUG - f19ad637-abd2-4e2f-bcb4-e3b3230d4a5d - Client Connected
+2022-08-14 19:43:59,531 - DEBUG - f19ad637-abd2-4e2f-bcb4-e3b3230d4a5d - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:59,731 - DEBUG - f6617301-1cb1-4816-9509-160d46bfbc47 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:59,737 - DEBUG - f6617301-1cb1-4816-9509-160d46bfbc47 - Client Connected
+2022-08-14 19:43:59,737 - DEBUG - f6617301-1cb1-4816-9509-160d46bfbc47 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:43:59,944 - DEBUG - c5fae3fe-8e7b-4438-8321-e5c2dc898581 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:43:59,949 - DEBUG - c5fae3fe-8e7b-4438-8321-e5c2dc898581 - Client Connected
+2022-08-14 19:43:59,950 - DEBUG - c5fae3fe-8e7b-4438-8321-e5c2dc898581 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:44:16,858 - DEBUG - 18ef3eff-4047-4b54-a33d-332119cc99b2 - http://localhost:8000/data/ship : Request started
+2022-08-14 19:44:17,458 - DEBUG - 18ef3eff-4047-4b54-a33d-332119cc99b2 - http://localhost:8000/data/ship : Request ended
+2022-08-14 19:44:17,733 - DEBUG - cfa91b61-9f5b-437b-9e8b-e68a7e191c6f - http://localhost:8000/images/icons/gear.png : Request started
+2022-08-14 19:44:17,734 - DEBUG - cfa91b61-9f5b-437b-9e8b-e68a7e191c6f - http://localhost:8000/images/icons/gear.png : Request ended
+2022-08-14 19:44:17,742 - DEBUG - 3983919e-5138-4a33-b368-580d604b5b26 - http://localhost:8000/favicon.ico : Request started
+2022-08-14 19:44:17,743 - DEBUG - 3983919e-5138-4a33-b368-580d604b5b26 - http://localhost:8000/favicon.ico : Request ended
+2022-08-14 19:44:19,007 - DEBUG - f2b4dc06-8ad1-4ebd-8a4c-e483a9ef1875 - http://localhost:8000/data/ship : Request started
+2022-08-14 19:44:19,557 - DEBUG - f2b4dc06-8ad1-4ebd-8a4c-e483a9ef1875 - http://localhost:8000/data/ship : Request ended
+2022-08-14 19:44:19,833 - DEBUG - b7505e6d-3389-466b-8441-c0c917dcb408 - http://localhost:8000/images/icons/gear.png : Request started
+2022-08-14 19:44:19,833 - DEBUG - b7505e6d-3389-466b-8441-c0c917dcb408 - http://localhost:8000/images/icons/gear.png : Request ended
+2022-08-14 19:44:21,932 - DEBUG - 227edbc0-5016-444d-b40b-96090e8a7e81 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:44:21,940 - DEBUG - 227edbc0-5016-444d-b40b-96090e8a7e81 - Client Connected
+2022-08-14 19:44:21,940 - DEBUG - 227edbc0-5016-444d-b40b-96090e8a7e81 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:44:28,645 - DEBUG - d3b3925b-24bc-4a3d-a1d2-e124c03fc7b4 - http://localhost:8000/data/ship : Request started
+2022-08-14 19:44:29,237 - DEBUG - d3b3925b-24bc-4a3d-a1d2-e124c03fc7b4 - http://localhost:8000/data/ship : Request ended
+2022-08-14 19:44:29,540 - DEBUG - 4e8c1cf9-c01c-4488-a8a9-04022c7073e8 - http://localhost:8000/images/icons/gear.png : Request started
+2022-08-14 19:44:29,541 - DEBUG - 4e8c1cf9-c01c-4488-a8a9-04022c7073e8 - http://localhost:8000/images/icons/gear.png : Request ended
+2022-08-14 19:44:29,943 - DEBUG - 66b3e084-bd37-4b86-901f-3744c260bd8b - http://localhost:8000/data/ship : Request started
+2022-08-14 19:44:30,492 - DEBUG - 66b3e084-bd37-4b86-901f-3744c260bd8b - http://localhost:8000/data/ship : Request ended
+2022-08-14 19:44:30,767 - DEBUG - b5f04287-52aa-4258-94ab-f2b53e63dba2 - http://localhost:8000/images/icons/gear.png : Request started
+2022-08-14 19:44:30,768 - DEBUG - b5f04287-52aa-4258-94ab-f2b53e63dba2 - http://localhost:8000/images/icons/gear.png : Request ended
+2022-08-14 19:44:31,176 - DEBUG - 4b33efee-379b-40c5-b5bf-86c669016e98 - http://localhost:8000/data/ship : Request started
+2022-08-14 19:44:31,735 - DEBUG - 4b33efee-379b-40c5-b5bf-86c669016e98 - http://localhost:8000/data/ship : Request ended
+2022-08-14 19:44:32,012 - DEBUG - 12570e3e-86bb-416a-91b8-c940c4ca27eb - http://localhost:8000/images/icons/gear.png : Request started
+2022-08-14 19:44:32,012 - DEBUG - 12570e3e-86bb-416a-91b8-c940c4ca27eb - http://localhost:8000/images/icons/gear.png : Request ended
+2022-08-14 19:44:33,933 - DEBUG - 76708182-d1af-410f-b478-60903a3ea736 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:44:33,938 - DEBUG - 76708182-d1af-410f-b478-60903a3ea736 - Client Connected
+2022-08-14 19:44:33,938 - DEBUG - 76708182-d1af-410f-b478-60903a3ea736 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-14 19:47:04,310 - INFO - Logger initialized
+2022-08-14 19:47:04,310 - INFO - None - Voyages for each ship is - 10
+2022-08-14 19:47:07,538 - DEBUG - d7a33c9a-b164-45bb-b001-b925f1d5cb73 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-14 19:47:07,545 - DEBUG - d7a33c9a-b164-45bb-b001-b925f1d5cb73 - Client Connected
+2022-08-14 19:47:07,546 - DEBUG - d7a33c9a-b164-45bb-b001-b925f1d5cb73 - http://127.0.0.1:8000/stream-logs : Request ended
