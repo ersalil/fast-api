@@ -4,13 +4,10 @@ from fastapi import Depends, HTTPException, APIRouter
 import datetime, json
 from sqlalchemy.orm import Session
 from settings import Settings
-from resources.strings import DESCRIPTION
-
-import logging
-logger = logging.getLogger('emb-mon-log')
+from resources.strings import AVG_VOYAGE_DATA, DESCRIPTION, DATA_NOT_FOUND, INTERNAL_ERROR, DATABASE_ERROR, LIMIT_IS, COLUMN_LOADED, OVERVIEW, VOYAGE_DATA
+from apilogging import log
 
 DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
-msg = "Somthing went wrong"
 
 router = APIRouter(prefix='/data')
 lookup = APIRouter(prefix='/model')
@@ -19,8 +16,12 @@ lookup = APIRouter(prefix='/model')
 setting = Settings()
 try:
     limit = setting.limit
+    log.info(LIMIT_IS, limit)
+    if limit == 0 or limit == None:
+        limit = 10
+        log.warning(DATA_NOT_FOUND, limit)
 except Exception as err:
-    logger.error({"Message": msg, "Traceback": err})
+    log.error(DATABASE_ERROR,err)
 
 
 @lookup.get('/table', tags=['model'], status_code=200, summary="Get table columns", description=DESCRIPTION)
@@ -28,19 +29,36 @@ async def tableModel():
     try:
         colModel = json.load(open('./resources/colModel.json'))
     except Exception as err:
-        logger.error({"Message": msg, "Traceback": err})
-        raise HTTPException(status_code=404, detail=f"Message: {msg}, Traceback: {err}")
+        log.error(INTERNAL_ERROR,err)
+        raise HTTPException(status_code=404, detail=f"Message: {INTERNAL_ERROR}, Traceback: {err}")
+    log.debug(COLUMN_LOADED)
     return colModel
 
 @router.get('/ship', tags=['ship'], status_code=200)
 async def shipsData(db: Session = Depends(get_db)):
-    return getShip(db)
+    try:
+        data = getShip(db)
+        if data is None or data == []:
+            log.error(DATA_NOT_FOUND, data)
+            raise HTTPException(status_code=404, detail=DATA_NOT_FOUND)
+    except Exception as err:
+        log.error(DATABASE_ERROR, err)
+        raise HTTPException(status_code=500, detail=json.dumps({"message":str(DATABASE_ERROR), "error": str(err)}))
+    return data
 
 
 # get embarkation summary data
 @router.get('/embark', tags=['ship'], status_code=200)
 async def embSummary(db: Session = Depends(get_db)):
-    return getEmbarkationSummary(db, limit)
+    try:
+        data = getEmbarkationSummary(db, limit)
+        if data is None or data == []:
+            log.error(DATA_NOT_FOUND, data)
+            raise HTTPException(status_code=404, detail=DATA_NOT_FOUND)
+    except Exception as err:
+        log.error(DATABASE_ERROR, err)
+        raise HTTPException(status_code=500, detail=json.dumps({"message":str(DATABASE_ERROR), "error": str(err)}))
+    return data
     
 
 # get table data
@@ -96,8 +114,9 @@ def voyOverview(db: Session = Depends(get_db)):
             if voy_dict != {}:
                 result.append(voy_dict)
     except Exception as err:
-        logger.error({"Message": msg, "Traceback": err})
-        raise HTTPException(status_code=500, detail=f"Message: {msg}, Traceback: {err}")
+        log.error(INTERNAL_ERROR,err)
+        raise HTTPException(status_code=500, detail=f"Message: {INTERNAL_ERROR}, Traceback: {err}")
+    log.info(OVERVIEW, len(result))
     return result
 
 
@@ -119,12 +138,15 @@ def voyageData(db: Session = Depends(get_db)):
     ships = getShip(db)
 
     try:
+        log_data = {}
         for ship in ships:
             ship_voy_list = []
+            # get distinct voyage numbers
             for row in es:
                 if row['code'] == ship['code']:
                     ship_voy_list.append(row['number'])
             ship_voy_list = list(set(ship_voy_list))
+            log_data[ship['code']] = ship_voy_list
             if ship_voy_list == []:
                 raise HTTPException(status_code=400, detail="Data can't be found")
             tmp_result = []
@@ -195,8 +217,9 @@ def voyageData(db: Session = Depends(get_db)):
             ship_data = sorted(ship_data, key=lambda i: i['checkedin_time'])
             result[ship['code']] = ship_data
     except Exception as err:
-        logger.error({"Message": msg, "Traceback": err})
-        raise HTTPException(status_code=500, detail=f"Message: {msg}, Traceback: {err}")
+        log.error(INTERNAL_ERROR,err)
+        raise HTTPException(status_code=500, detail=f"Message: {INTERNAL_ERROR}, Traceback: {err}")
+    log.info(VOYAGE_DATA, log_data)
     return result
 
 
@@ -233,6 +256,7 @@ def avgVoyageData(db: Session = Depends(get_db)):
                         result.append(each_time)
         result = sorted(result, key=lambda i: i['checkedin_time'])
     except Exception as err:
-        logger.error({"Message": msg, "Traceback": err})
-        raise HTTPException(status_code=500, detail=f"Message: {msg}, Traceback: {err}")
+        log.error(INTERNAL_ERROR,err)
+        raise HTTPException(status_code=500, detail=f"Message: {INTERNAL_ERROR}, Traceback: {err}")
+    log.info(AVG_VOYAGE_DATA, len(result))
     return result

@@ -1,16 +1,15 @@
-
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse, StreamingResponse
+from sse_starlette.sse import EventSourceResponse
 from fastapi.middleware.cors import CORSMiddleware
 from resources.docs import title, description, tags_metadata
 from api import router, lookup
+from apilogging import log, createRequestIdContextvar, getRequestId, logGenerator
 
-
-# Create FastAPI instance
 app = FastAPI(title=title, description=description, openapi_tags=tags_metadata, docs_url="/api/docs")
 
 # frontend_url in the config file
-# url of deployed frontend = http://app.embarkation-analytics.sreinsights.com
-origins = ['http://localhost:23000', 'http://127.0.0.1:23000', 'http://localhost:3000', 'http://127.0.0.1:3000',"http://app.embarkation-analytics.sreinsights.com","http://app.embarkation-analytics.sreinsights.com:80"]
+origins = ["*"]
 
 # Add CORS middleware
 app.add_middleware(CORSMiddleware,
@@ -25,10 +24,32 @@ app.include_router(router)
 app.include_router(lookup)
 
 # home route
+@app.middleware("http")
+async def request_middleware(request: Request, call_next):
+    createRequestIdContextvar()
+    log.debug(f"{request.url} : Request started")
+
+    try:
+        response = await call_next(request)
+
+    except Exception as ex:
+        log.debug(f"{request.url} : Request failed: {ex}")
+        response =  JSONResponse(content={"success": False}, status_code=500)
+
+    finally:
+        response.headers["X-Request-ID"] = getRequestId()
+        log.debug(f"{request.url} : Request ended")
+        return response
+
 @app.get('/')
-def root():
+async def root():
     return {"version": "1.3.0",
             "port": "8000",
             "health": "green",
             "name": "sre-embarkation-manifest-backend"
             }
+
+@app.get('/stream-logs')
+async def run(request: Request):
+    event_generator = logGenerator(request)
+    return EventSourceResponse(event_generator)
