@@ -1,5 +1,6 @@
 import logging, logging.config
-import contextvars, uuid
+import contextvars, uuid, time
+from fastapi import Request
 
 logging.config.fileConfig('logging.conf')
 
@@ -35,3 +36,13 @@ class Log:
         self.logger.exception(msg)
 
 log = Log()
+
+async def logGenerator(request: Request):
+    with open('./logfile.log', 'r') as file:
+        log.debug("Client Connected")
+        for line in file.readlines()[::-1]:
+            if await request.is_disconnected():
+                log.debug("Client disconnected")
+                break
+            yield line
+            time.sleep(0.5)
