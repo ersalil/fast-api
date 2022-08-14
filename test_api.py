@@ -1,97 +1,12 @@
 import unittest
 import api
 import random
+import db.crud as crud
 
 class TestData(unittest.TestCase):
 
-#     def testVoyage1(self):
-#         result = api.voyageData()
-#         self.assertEqual(result['DF'][0], {
-# "voyage_id": "DF0546",
-# "checkedin_time": "14:00",
-# "onboard_time": "14:00",
-# "actual_count": 12,
-# "onboard_couch": 0,
-# "checkedin_couch": 12
-# })
-
-#     def testVoyage2(self):
-#         result = api.voyageData()
-#         self.assertEqual(result['DW'][0], {
-# "voyage_id": "DW1888",
-# "checkedin_time": "17:00",
-# "onboard_time": "17:00",
-# "actual_count": 6,
-# "onboard_couch": 0,
-# "checkedin_couch": 6
-# })
-
-#     def testVoyage3(self):
-#         result = api.voyageData()
-#         self.assertEqual(result['DM'][5], {
-# "voyage_id": "DM1372",
-# "checkedin_time": "08:30",
-# "onboard_time": "08:30",
-# "actual_count": 8,
-# "onboard_couch": 0,
-# "checkedin_couch": 4
-# })
-
-#     def testAvgVoyage1(self):
-#         result = api.avgVoyageData()
-#         self.assertEqual(result[0], {
-# "voyage_id": "DM1370",
-# "checkedin_time": "08:00",
-# "onboard_time": "08:00",
-# "actual_count": 4,
-# "onboard_couch": 4,
-# "checkedin_couch": 4,
-# "avg_checkedin_couch": 1,
-# "avg_onboard_couch": 0,
-# "ship": "DM"
-# })
-
-#     def testAvgVoyage2(self):
-#         result = api.avgVoyageData()
-#         self.assertEqual(result[1], {
-# "voyage_id": "DM1372",
-# "checkedin_time": "08:00",
-# "onboard_time": "08:00",
-# "actual_count": 4,
-# "onboard_couch": 0,
-# "checkedin_couch": 4,
-# "avg_checkedin_couch": 1,
-# "avg_onboard_couch": 0,
-# "ship": "DM"
-# })
-
-#     def testAvgVoyage3(self):
-#         result = api.avgVoyageData()
-#         self.assertEqual(result[9], {
-# "voyage_id": "DM1370",
-# "checkedin_time": "08:30",
-# "onboard_time": "08:30",
-# "actual_count": 4,
-# "onboard_couch": 0,
-# "checkedin_couch": 0,
-# "avg_checkedin_couch": 0,
-# "avg_onboard_couch": 0,
-# "ship": "DM"
-# })
-
-#     def testOverview1(self):
-#         result = list(api.voyOverview())
-#         self.assertEqual(result[0]['code'], 
-#  "DW")
-
-#     def testOverview2(self):
-#         result = list(api.voyOverview())
-#         self.assertEqual(result[20]['code'], 
-#  "DW")
-
-
     def testVoyage1(self):
-        result = api.voyageData()
+        result = crud.getShip()
         self.assertEqual(list(result.keys()), ['DF', 'DM', 'DW', 'DD', 'WW'])
     
     def testVoyage2(self):
