@@ -4,18 +4,16 @@ from .database import SessionLocal
 from model.models import Ship, ApplicationSetting
 from fastapi import HTTPException
 import json
+from logging import log
+
+
 msg = "Database connection error"
 
 def getShip(db: Session):
-    try:
-        data = db.execute(f"SELECT ship_id, name, code FROM ship")
-        if data is None or data == []:
-            raise HTTPException(status_code=404, detail=msg)
-        result = []
-        for row in data:
-            result.append(dict(row))
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=json.dumps({"message":str(msg), "error": str(e)}))
+    data = db.execute(f"SELECT ship_id, name, code FROM ship")
+    result = []
+    for row in data:
+        result.append(dict(row))
     return result
 
 
@@ -25,13 +23,8 @@ def getLimit():
 
 
 def getEmbarkationSummary(db: Session, limit: int):
-    try:
-        data = db.execute(f"SELECT * FROM get_embark_summary({limit})").all()
-        if data is None or data == []:
-            raise HTTPException(status_code=404, detail=msg)
-        result = []
-        for row in data:
-            result.append(dict(row))
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=json.dumps({"message":str(msg), "error": str(e)}))
+    data = db.execute(f"SELECT * FROM get_embark_summary({limit})").all()
+    result = []
+    for row in data:
+        result.append(dict(row))
     return result
