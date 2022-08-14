@@ -1,4 +1,3 @@
-# from tkinter import E
 from sqlalchemy.orm import Session
 from .database import SessionLocal
 from model.models import Ship, ApplicationSetting
