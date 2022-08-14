@@ -45,4 +45,3 @@ async def logGenerator(request: Request):
                 log.debug("Client disconnected")
                 break
             yield line
-            time.sleep(0.5)
