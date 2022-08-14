@@ -1,94 +1,103 @@
-from db.crud import getEmbarkationSummary, getLimit, getShip
+from db.crud import getEmbarkationSummary, getShip
 from db.database import get_db
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, APIRouter
 import datetime, json
 from sqlalchemy.orm import Session
-from model import models, schemas
 from settings import Settings
-import asyncio
-from fastapi import APIRouter
+from resources.strings import DESCRIPTION
+
+import logging
+logger = logging.getLogger('emb-mon-log')
 
 DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
+msg = "Somthing went wrong"
 
 router = APIRouter(prefix='/data')
 lookup = APIRouter(prefix='/model')
+
 # limit = 10
 setting = Settings()
-limit = setting.limit
+try:
+    limit = setting.limit
+except Exception as err:
+    logger.error({"Message": msg, "Traceback": err})
 
-msg = "Somthing went wrong"
 
-@lookup.get('/table', tags=['model'], status_code=200)
-async def tableModel():
+@lookup.get('/table', tags=['model'], status_code=200, summary="Get table columns", description=DESCRIPTION)
+async def tableModel(): 
     try:
         colModel = json.load(open('./resources/colModel.json'))
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Message: {msg}, Traceback: {e}")
+    except Exception as err:
+        logger.error({"Message": msg, "Traceback": err})
+        raise HTTPException(status_code=404, detail=f"Message: {msg}, Traceback: {err}")
     return colModel
 
 @router.get('/ship', tags=['ship'], status_code=200)
 async def shipsData(db: Session = Depends(get_db)):
-    return await getShip(db)
+    return getShip(db)
 
 
 # get embarkation summary data
 @router.get('/embark', tags=['ship'], status_code=200)
 async def embSummary(db: Session = Depends(get_db)):
-    return await getEmbarkationSummary(db, limit)
+    return getEmbarkationSummary(db, limit)
     
 
 # get table data
-@router.get('/overview', tags=['ship'])
+@router.get('/overview', tags=['ship'], status_code=200)
 def voyOverview(db: Session = Depends(get_db)):
     es = getEmbarkationSummary(db, limit)
-    result = []
-    voy_list = []
-    # get distinct voyage numbers
-    es = list(es)
-    for row in es:
-        if row['number'] not in voy_list:
-            voy_list.append(row['number'])
-
-    # find first checkin and onboard date for each voyage
-    for voyage in voy_list:
-        first_entry_check = True
-        min_flag_checkin_count = 99999
-        min_flag_onboard_count = 99999
-        voy_dict = {}
-
-        # matching all the embark summary data for each voyage
+    try:
+        result = []
+        voy_list = []
+        # get distinct voyage numbers
+        es = list(es)
         for row in es:
-            if row['number'] == voyage:
+            if row['number'] not in voy_list:
+                voy_list.append(row['number'])
 
-                # to get latest es data for each voyage and skip the rest
-                if first_entry_check:
-                    voy_dict = row
-                    first_entry_check = False
+        # find first checkin and onboard date for each voyage
+        for voyage in voy_list:
+            first_entry_check = True
+            min_flag_checkin_count = 99999
+            min_flag_onboard_count = 99999
+            voy_dict = {}
 
-                # if we need end date as on board date
-                # if max_flag < row['checkedin_couch']:
-                #     max_flag = row['checkedin_couch']
-                #     voy_dict['end_date'] = str(datetime.datetime(row['added_date'].year , row['added_date'].month , row['added_date'].day, row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
-                #     # flag2 = 1
-                # temp = str(datetime.datetime(row['added_date'].year , row['added_date'].month , row['added_date'].day, row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
+            # matching all the embark summary data for each voyage
+            for row in es:
+                if row['number'] == voyage:
 
-                # else we need on board date
-                # get minimum onboard count and it's respective date
-                if min_flag_onboard_count > row['onboard_couch']:
-                    min_flag_onboard_count = row['onboard_couch']
-                    voy_dict['end_date'] = str(datetime.datetime(row['added_date'].year, row['added_date'].month, row['added_date'].day,
-                                                                 row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
+                    # to get latest es data for each voyage and skip the rest
+                    if first_entry_check:
+                        voy_dict = row
+                        first_entry_check = False
 
-                # get minimum checkin count and it's respective date
-                if min_flag_checkin_count > row['checkedin_couch']:
-                    min_flag_checkin_count = row['checkedin_couch']
-                    voy_dict['start_date'] = str(datetime.datetime(row['added_date'].year, row['added_date'].month, row['added_date'].day,
-                                                                   row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
+                    # if we need end date as on board date
+                    # if max_flag < row['checkedin_couch']:
+                    #     max_flag = row['checkedin_couch']
+                    #     voy_dict['end_date'] = str(datetime.datetime(row['added_date'].year , row['added_date'].month , row['added_date'].day, row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
+                    #     # flag2 = 1
+                    # temp = str(datetime.datetime(row['added_date'].year , row['added_date'].month , row['added_date'].day, row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
 
-        # ignoring all the empty data
-        if voy_dict != {}:
-            result.append(voy_dict)
-    print(result)
+                    # else we need on board date
+                    # get minimum onboard count and it's respective date
+                    if min_flag_onboard_count > row['onboard_couch']:
+                        min_flag_onboard_count = row['onboard_couch']
+                        voy_dict['end_date'] = str(datetime.datetime(row['added_date'].year, row['added_date'].month, row['added_date'].day,
+                                                                    row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
+
+                    # get minimum checkin count and it's respective date
+                    if min_flag_checkin_count > row['checkedin_couch']:
+                        min_flag_checkin_count = row['checkedin_couch']
+                        voy_dict['start_date'] = str(datetime.datetime(row['added_date'].year, row['added_date'].month, row['added_date'].day,
+                                                                    row['added_date'].hour, row['added_date'].minute, row['added_date'].second)).replace('T', " ")
+
+            # ignoring all the empty data
+            if voy_dict != {}:
+                result.append(voy_dict)
+    except Exception as err:
+        logger.error({"Message": msg, "Traceback": err})
+        raise HTTPException(status_code=500, detail=f"Message: {msg}, Traceback: {err}")
     return result
 
 
@@ -103,128 +112,127 @@ def roundTime(dt):
 
 
 # get data for line graph
-@router.get('/voyage', tags=['ship'])
+@router.get('/voyage', tags=['ship'], status_code=200)
 def voyageData(db: Session = Depends(get_db)):
     result = {}
     es = getEmbarkationSummary(db, limit)
     ships = getShip(db)
-    if ships == [] or ships == None:
-        raise HTTPException(status_code=400, detail="Data can't be found")
-    if es == [] or es == None:
-        raise HTTPException(status_code=400, detail="Data can't be found")
-    for ship in ships:
-        ship_voy_list = []
-        for row in es:
-            if row['code'] == ship['code']:
-                ship_voy_list.append(row['number'])
-        ship_voy_list = list(set(ship_voy_list))
-        if ship_voy_list == []:
-            raise HTTPException(status_code=400, detail="Data can't be found")
-        tmp_result = []
 
-        for voy_num in ship_voy_list:
-            tmp_index = 0
-            voy_data = {}
-
+    try:
+        for ship in ships:
+            ship_voy_list = []
             for row in es:
-                if row['number'] == voy_num:
-                    dt = roundTime(row['added_date'])
-                    try:
-                        checkedin_count = row['checkedin_couch'] - \
-                            tmp_result[tmp_index-1].values()[0]
-                    except:
-                        checkedin_count = row['checkedin_couch']
+                if row['code'] == ship['code']:
+                    ship_voy_list.append(row['number'])
+            ship_voy_list = list(set(ship_voy_list))
+            if ship_voy_list == []:
+                raise HTTPException(status_code=400, detail="Data can't be found")
+            tmp_result = []
 
-                    try:
-                        onboard_count = row['onboard_couch'] - \
-                            tmp_result[tmp_index-1].values()[1]
-                    except:
-                        onboard_count = row['onboard_couch']
+            for voy_num in ship_voy_list:
+                tmp_index = 0
+                voy_data = {}
 
-                    voy_data[dt] = [checkedin_count, onboard_count, voy_num]
-                    tmp_index += 1
-            tmp_result.append(voy_data)
-            # print(tmp_result)
-            # print("-----------------------------------------------------")
-        ship_data = []
-        for tmp_voy_data in tmp_result:
-            dict_time = list(tmp_voy_data.items())
-            flag = False
-            for idx, (dkey, dval) in enumerate(dict_time):
-                dkey = dkey.strftime("%H:%M")
+                for row in es:
+                    if row['number'] == voy_num:
+                        dt = roundTime(row['added_date'])
+                        try:
+                            checkedin_count = row['checkedin_couch'] - \
+                                tmp_result[tmp_index-1].values()[0]
+                        except:
+                            checkedin_count = row['checkedin_couch']
 
-                interval_data = {}
-                interval_data['voyage_id'] = dval[2]
-                interval_data['checkedin_time'] = dkey
-                interval_data['onboard_time'] = dkey
-                interval_data["actual_count"] = dval[0]
+                        try:
+                            onboard_count = row['onboard_couch'] - \
+                                tmp_result[tmp_index-1].values()[1]
+                        except:
+                            onboard_count = row['onboard_couch']
 
-                if dval[1] != 0:
-                    try:
-                        dval[1] = dval[1] - dict_time[idx+1][1][1]
-                        dict_time[idx][1][1] = dval[1]
-                    except:
-                        pass
-                    interval_data['onboard_couch'] = dval[1]
-                else:
-                    interval_data['onboard_couch'] = 0
+                        voy_data[dt] = [checkedin_count, onboard_count, voy_num]
+                        tmp_index += 1
+                tmp_result.append(voy_data)
+                # print(tmp_result)
+                # print("-----------------------------------------------------")
+            ship_data = []
+            for tmp_voy_data in tmp_result:
+                dict_time = list(tmp_voy_data.items())
+                flag = False
+                for idx, (dkey, dval) in enumerate(dict_time):
+                    dkey = dkey.strftime("%H:%M")
 
-                if dval[0] != 0:
-                    try:
-                        dval[0] = dval[0] - dict_time[idx+1][1][0]
-                        dict_time[idx][1][0] = dval[0]
-                    except:
-                        pass
-                    interval_data['checkedin_couch'] = dval[0]
-                else:
-                    interval_data['checkedin_couch'] = 0
+                    interval_data = {}
+                    interval_data['voyage_id'] = dval[2]
+                    interval_data['checkedin_time'] = dkey
+                    interval_data['onboard_time'] = dkey
+                    interval_data["actual_count"] = dval[0]
 
-                if (dval[0] != 0 or dval[1] != 0) or flag:
-                    flag = True
-                    ship_data.append(interval_data)
+                    if dval[1] != 0:
+                        try:
+                            dval[1] = dval[1] - dict_time[idx+1][1][1]
+                            dict_time[idx][1][1] = dval[1]
+                        except:
+                            pass
+                        interval_data['onboard_couch'] = dval[1]
+                    else:
+                        interval_data['onboard_couch'] = 0
 
-        ship_data = sorted(ship_data, key=lambda i: i['voyage_id'])
+                    if dval[0] != 0:
+                        try:
+                            dval[0] = dval[0] - dict_time[idx+1][1][0]
+                            dict_time[idx][1][0] = dval[0]
+                        except:
+                            pass
+                        interval_data['checkedin_couch'] = dval[0]
+                    else:
+                        interval_data['checkedin_couch'] = 0
 
-        ship_data = sorted(ship_data, key=lambda i: i['checkedin_time'])
-        result[ship['code']] = ship_data
+                    if (dval[0] != 0 or dval[1] != 0) or flag:
+                        flag = True
+                        ship_data.append(interval_data)
+
+            ship_data = sorted(ship_data, key=lambda i: i['voyage_id'])
+
+            ship_data = sorted(ship_data, key=lambda i: i['checkedin_time'])
+            result[ship['code']] = ship_data
+    except Exception as err:
+        logger.error({"Message": msg, "Traceback": err})
+        raise HTTPException(status_code=500, detail=f"Message: {msg}, Traceback: {err}")
     return result
 
 
 
 # get data for bar graph
-@router.get('/avg/voyage', tags=['ship'])
+@router.get('/avg/voyage', tags=['ship'], status_code=200)
 def avgVoyageData(db: Session = Depends(get_db)):
-    global limit
     temp_result = voyageData(db)
-    if limit == None:
-        raise HTTPException(status_code=500, detail='Application setting not found')
-    # store result of line graph in a dictionary and then sort it by date 
-    if temp_result == [] or temp_result == None:
-        raise HTTPException(status_code=400, detail="Data can't be found")
-    result = []
-    # iterate over each ship
-    for each_dict in temp_result:
-        # iterate over each voyage
-        for row in temp_result[each_dict]:
-            count = 0
-            avg_checkedin_couch = 0
-            avg_onboard_couch = 0
-            for each_time in temp_result[each_dict]:
-                if each_time['checkedin_time'] == row['checkedin_time'] and count < limit:
-                    avg_checkedin_couch += each_time['checkedin_couch']
-                    avg_onboard_couch += each_time['onboard_couch']
-                    count += 1
-            avg_checkedin_couch = int(avg_checkedin_couch/limit)
-            avg_onboard_couch = int(avg_onboard_couch/limit)
-            for each_time in temp_result[each_dict]:
-                if each_time['checkedin_time'] == row['checkedin_time']:
-                    if avg_onboard_couch < 0:
-                        avg_onboard_couch = -1*avg_onboard_couch
-                    if avg_checkedin_couch < 0:
-                        avg_checkedin_couch = -1*avg_checkedin_couch
-                    each_time['avg_checkedin_couch'] = avg_checkedin_couch
-                    each_time['avg_onboard_couch'] = avg_onboard_couch
-                    each_time['ship'] = each_dict
-                    result.append(each_time)
-    result = sorted(result, key=lambda i: i['checkedin_time'])
+    try:
+        result = []
+        # iterate over each ship
+        for each_dict in temp_result:
+            # iterate over each voyage
+            for row in temp_result[each_dict]:
+                count = 0
+                avg_checkedin_couch = 0
+                avg_onboard_couch = 0
+                for each_time in temp_result[each_dict]:
+                    if each_time['checkedin_time'] == row['checkedin_time'] and count < limit:
+                        avg_checkedin_couch += each_time['checkedin_couch']
+                        avg_onboard_couch += each_time['onboard_couch']
+                        count += 1
+                avg_checkedin_couch = int(avg_checkedin_couch/limit)
+                avg_onboard_couch = int(avg_onboard_couch/limit)
+                for each_time in temp_result[each_dict]:
+                    if each_time['checkedin_time'] == row['checkedin_time']:
+                        if avg_onboard_couch < 0:
+                            avg_onboard_couch = -1*avg_onboard_couch
+                        if avg_checkedin_couch < 0:
+                            avg_checkedin_couch = -1*avg_checkedin_couch
+                        each_time['avg_checkedin_couch'] = avg_checkedin_couch
+                        each_time['avg_onboard_couch'] = avg_onboard_couch
+                        each_time['ship'] = each_dict
+                        result.append(each_time)
+        result = sorted(result, key=lambda i: i['checkedin_time'])
+    except Exception as err:
+        logger.error({"Message": msg, "Traceback": err})
+        raise HTTPException(status_code=500, detail=f"Message: {msg}, Traceback: {err}")
     return result

@@ -3,9 +3,8 @@ from fastapi import FastAPI, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from resources.docs import title, description, tags_metadata
 from api import router, lookup
-from db.database import SessionLocal
 
-import logging
+
 
 app = FastAPI(title=title, description=description, openapi_tags=tags_metadata, docs_url="/api/docs")
 
@@ -29,5 +28,3 @@ def root():
             "health": "green",
             "name": "sre-embarkation-manifest-backend"
             }
-
-logger = logging.getLogger('emb-mon-log')

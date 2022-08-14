@@ -20,14 +20,8 @@ def getShip(db: Session):
 
 
 def getLimit():
-    try:
-        db = SessionLocal()
-        data = db.query(ApplicationSetting.value).filter(ApplicationSetting.application_setting_id == '816063c1-99a2-4cf0-b44e-c6f40397d57c').first()[0]
-        if data is None:
-            raise HTTPException(status_code=404, detail=msg)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=json.dumps({"message":str(msg), "error": str(e)}))
-    return data
+    db = SessionLocal()
+    return db.query(ApplicationSetting.value).filter(ApplicationSetting.application_setting_id == '816063c1-99a2-4cf0-b44e-c6f40397d57c').first()[0]
 
 
 def getEmbarkationSummary(db: Session, limit: int):
