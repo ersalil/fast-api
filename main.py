@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse, StreamingResponse
 from sse_starlette.sse import EventSourceResponse
 from fastapi.middleware.cors import CORSMiddleware
-from resources.docs import title, description, tags_metadata
+from resources.docs import title, description, tags_metadata, logs_stream, home
 from api import router, lookup
 from apilogging import log, createRequestIdContextvar, getRequestId, logGenerator
 
@@ -41,7 +41,7 @@ async def request_middleware(request: Request, call_next):
         log.debug(f"{request.url} : Request ended")
         return response
 
-@app.get('/')
+@app.get('/' , summary="ROOT PAGE", description=home)
 async def root():
     return {"version": "1.3.0",
             "port": "8000",
@@ -49,7 +49,7 @@ async def root():
             "name": "sre-embarkation-manifest-backend"
             }
 
-@app.get('/stream-logs')
+@app.get('/stream-logs', summary="LOGS", description=logs_stream)
 async def run(request: Request):
     event_generator = logGenerator(request)
     return EventSourceResponse(event_generator)

@@ -4,7 +4,8 @@ from fastapi import Depends, HTTPException, APIRouter
 import datetime, json
 from sqlalchemy.orm import Session
 from settings import Settings
-from resources.strings import AVG_VOYAGE_DATA, DESCRIPTION, DATA_NOT_FOUND, INTERNAL_ERROR, DATABASE_ERROR, LIMIT_IS, COLUMN_LOADED, OVERVIEW, VOYAGE_DATA
+from resources.strings import AVG_VOYAGE_DATA, DATA_NOT_FOUND, INTERNAL_ERROR, DATABASE_ERROR, LIMIT_IS, COLUMN_LOADED, OVERVIEW, VOYAGE_DATA
+from resources.docs import table_columns, ship_data, embark_data, avg_voyage_data, data_overview, voyage_data
 from apilogging import log
 
 DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
@@ -24,8 +25,8 @@ except Exception as err:
     log.error(DATABASE_ERROR,err)
 
 
-@lookup.get('/table', tags=['model'], status_code=200, summary="Get table columns", description=DESCRIPTION)
-async def tableModel(): 
+@lookup.get('/table', tags=['model'], status_code=200, summary="Get table columns", description=table_columns)
+async def tableModel():
     try:
         colModel = json.load(open('./resources/colModel.json'))
     except Exception as err:
@@ -34,7 +35,7 @@ async def tableModel():
     log.debug(COLUMN_LOADED)
     return colModel
 
-@router.get('/ship', tags=['ship'], status_code=200)
+@router.get('/ship', tags=['ship'], status_code=200, summary="Get ship data", description=ship_data)
 async def shipsData(db: Session = Depends(get_db)):
     try:
         data = getShip(db)
@@ -48,7 +49,7 @@ async def shipsData(db: Session = Depends(get_db)):
 
 
 # get embarkation summary data
-@router.get('/embark', tags=['ship'], status_code=200)
+@router.get('/embark', tags=['ship'], status_code=200, summary="Get embarkation summary", description=embark_data)
 async def embSummary(db: Session = Depends(get_db)):
     try:
         data = getEmbarkationSummary(db, limit)
@@ -59,10 +60,10 @@ async def embSummary(db: Session = Depends(get_db)):
         log.error(DATABASE_ERROR, err)
         raise HTTPException(status_code=500, detail=json.dumps({"message":str(DATABASE_ERROR), "error": str(err)}))
     return data
-    
+
 
 # get table data
-@router.get('/overview', tags=['ship'], status_code=200)
+@router.get('/overview', tags=['ship'], status_code=200, summary="Get data for Table", description=data_overview)
 def voyOverview(db: Session = Depends(get_db)):
     es = getEmbarkationSummary(db, limit)
     try:
@@ -131,7 +132,7 @@ def roundTime(dt):
 
 
 # get data for line graph
-@router.get('/voyage', tags=['ship'], status_code=200)
+@router.get('/voyage', tags=['ship'], status_code=200, summary="Get data for Line Graph Representation", description=voyage_data)
 def voyageData(db: Session = Depends(get_db)):
     result = {}
     es = getEmbarkationSummary(db, limit)
@@ -225,7 +226,7 @@ def voyageData(db: Session = Depends(get_db)):
 
 
 # get data for bar graph
-@router.get('/avg/voyage', tags=['ship'], status_code=200)
+@router.get('/avg/voyage', tags=['ship'], status_code=200, summary="Get data for Bar Graph Representation", description=avg_voyage_data)
 def avgVoyageData(db: Session = Depends(get_db)):
     temp_result = voyageData(db)
     try:

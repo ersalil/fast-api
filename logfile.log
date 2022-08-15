@@ -38,3 +38,351 @@
 2022-08-14 19:22:20,894 - DEBUG - 9bcdea17-2d63-4d8f-8e95-794a345c2c1d - Client Connected
 2022-08-14 19:22:20,894 - DEBUG - 9bcdea17-2d63-4d8f-8e95-794a345c2c1d - http://127.0.0.1:8000/stream-logs : Request ended
 2022-08-14 19:22:25,468 - DEBUG - 9bcdea17-2d63-4d8f-8e95-794a345c2c1d - Client disconnected
+2022-08-14 21:17:11,301 - INFO - Logger initialized
+2022-08-14 21:17:11,302 - INFO - None - Voyages for each ship is - 10
+2022-08-14 21:19:28,198 - DEBUG - 68af855d-4417-47d2-907d-22af00984331 - http://127.0.0.1:8000/ : Request started
+2022-08-14 21:19:28,200 - DEBUG - 68af855d-4417-47d2-907d-22af00984331 - http://127.0.0.1:8000/ : Request ended
+2022-08-14 21:19:28,346 - DEBUG - 2cc3372a-768f-4862-a7f0-42f1b6cffdb0 - http://127.0.0.1:8000/images/icons/gear.png : Request started
+2022-08-14 21:19:28,346 - DEBUG - 2cc3372a-768f-4862-a7f0-42f1b6cffdb0 - http://127.0.0.1:8000/images/icons/gear.png : Request ended
+2022-08-14 21:19:35,824 - DEBUG - 0b399366-63d7-451b-a629-fe5dd50705bf - http://127.0.0.1:8000/api.docs : Request started
+2022-08-14 21:19:35,825 - DEBUG - 0b399366-63d7-451b-a629-fe5dd50705bf - http://127.0.0.1:8000/api.docs : Request ended
+2022-08-14 21:19:35,925 - DEBUG - 8caffd20-e844-4d2f-9a50-22085ce8b9cb - http://127.0.0.1:8000/images/icons/gear.png : Request started
+2022-08-14 21:19:35,926 - DEBUG - 8caffd20-e844-4d2f-9a50-22085ce8b9cb - http://127.0.0.1:8000/images/icons/gear.png : Request ended
+2022-08-14 21:19:42,208 - DEBUG - 16ada6b7-f22d-4ead-accc-347ad43efe75 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-14 21:19:42,209 - DEBUG - 16ada6b7-f22d-4ead-accc-347ad43efe75 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-14 21:19:42,323 - DEBUG - 618cce41-75c5-42ba-b1dc-e90603228194 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-14 21:19:42,330 - DEBUG - 618cce41-75c5-42ba-b1dc-e90603228194 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-14 21:20:29,745 - INFO - Logger initialized
+2022-08-14 21:20:29,745 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:13:07,652 - INFO - Logger initialized
+2022-08-15 09:13:07,654 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:15:19,697 - DEBUG - 32b59d85-c6c2-41fc-ac0a-1be0891c7e14 - http://127.0.0.1:8000/ : Request started
+2022-08-15 09:15:19,700 - DEBUG - 32b59d85-c6c2-41fc-ac0a-1be0891c7e14 - http://127.0.0.1:8000/ : Request ended
+2022-08-15 09:15:19,864 - DEBUG - 5d196e5b-74e9-4bd6-ab48-07ee6b262e59 - http://127.0.0.1:8000/images/icons/gear.png : Request started
+2022-08-15 09:15:19,865 - DEBUG - 5d196e5b-74e9-4bd6-ab48-07ee6b262e59 - http://127.0.0.1:8000/images/icons/gear.png : Request ended
+2022-08-15 09:15:29,667 - DEBUG - e67fbe6a-f1ee-4b44-a36d-cef27346488b - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 09:15:29,669 - DEBUG - e67fbe6a-f1ee-4b44-a36d-cef27346488b - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 09:15:29,878 - DEBUG - 68e1eaff-0512-4c7d-80ed-757077fc7f1f - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 09:15:29,888 - DEBUG - 68e1eaff-0512-4c7d-80ed-757077fc7f1f - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 09:18:33,091 - INFO - Logger initialized
+2022-08-15 09:18:33,095 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:18:33,114 - DEBUG - aac72512-ff9d-4044-aafe-a57085d18600 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 09:18:33,115 - DEBUG - aac72512-ff9d-4044-aafe-a57085d18600 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 09:18:33,209 - DEBUG - 349f999f-af95-4765-8f55-020b878472d9 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 09:18:33,217 - DEBUG - 349f999f-af95-4765-8f55-020b878472d9 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 09:19:04,488 - INFO - Logger initialized
+2022-08-15 09:19:04,488 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:19:04,498 - DEBUG - ae5dfc24-1cf3-45e9-821f-be6288171d77 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 09:19:04,499 - DEBUG - ae5dfc24-1cf3-45e9-821f-be6288171d77 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 09:19:04,617 - DEBUG - d157a302-e02e-4a7b-b795-06ba8dc727a2 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 09:19:04,625 - DEBUG - d157a302-e02e-4a7b-b795-06ba8dc727a2 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 09:49:04,172 - INFO - Logger initialized
+2022-08-15 09:49:04,174 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:49:24,045 - INFO - Logger initialized
+2022-08-15 09:49:24,046 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:49:51,750 - INFO - Logger initialized
+2022-08-15 09:49:51,751 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:49:51,772 - DEBUG - 9d6cba45-3794-40c4-8f88-57d6d5e9d887 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 09:49:51,773 - DEBUG - 9d6cba45-3794-40c4-8f88-57d6d5e9d887 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 09:49:51,947 - DEBUG - 04324ac7-ba94-4f21-9182-7af3afde9b22 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 09:49:51,958 - DEBUG - 04324ac7-ba94-4f21-9182-7af3afde9b22 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 09:51:13,881 - INFO - Logger initialized
+2022-08-15 09:51:13,881 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:51:36,495 - INFO - Logger initialized
+2022-08-15 09:51:36,496 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:51:55,833 - DEBUG - 7327d3a2-cef0-4eb3-9c22-a76803bddeba - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 09:51:55,835 - DEBUG - 7327d3a2-cef0-4eb3-9c22-a76803bddeba - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 09:51:56,338 - DEBUG - fc583696-192d-4120-a3d3-c7b2a9482140 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 09:51:56,340 - DEBUG - fc583696-192d-4120-a3d3-c7b2a9482140 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 09:52:50,553 - INFO - Logger initialized
+2022-08-15 09:52:50,554 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:53:04,275 - INFO - Logger initialized
+2022-08-15 09:53:04,276 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:53:41,119 - INFO - Logger initialized
+2022-08-15 09:53:41,120 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:53:59,831 - INFO - Logger initialized
+2022-08-15 09:53:59,833 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:53:59,852 - DEBUG - 70bf0464-dcd8-4fe4-9f37-2cbbd618f4ec - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 09:53:59,853 - DEBUG - 70bf0464-dcd8-4fe4-9f37-2cbbd618f4ec - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 09:53:59,959 - DEBUG - 7013608d-1def-49a8-be3e-dbe17aea21d4 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 09:53:59,966 - DEBUG - 7013608d-1def-49a8-be3e-dbe17aea21d4 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 09:58:12,911 - INFO - Logger initialized
+2022-08-15 09:58:12,911 - INFO - None - Voyages for each ship is - 10
+2022-08-15 09:58:50,549 - INFO - Logger initialized
+2022-08-15 09:58:50,550 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:01:30,965 - INFO - Logger initialized
+2022-08-15 10:01:30,966 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:04:49,432 - INFO - Logger initialized
+2022-08-15 10:04:49,433 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:07:40,706 - INFO - Logger initialized
+2022-08-15 10:07:40,706 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:08:23,327 - INFO - Logger initialized
+2022-08-15 10:08:23,327 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:08:23,336 - DEBUG - 4afc08c4-893a-49eb-96b1-830609cca130 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:08:23,336 - DEBUG - 48024788-1f8a-4be9-a6b3-b07344e96d2f - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:08:23,336 - DEBUG - c4c30bff-e3d3-4ac0-9131-722a5b797e04 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:08:23,336 - DEBUG - 0a9a9bb0-0c96-4765-8f18-90acda086e0d - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:08:23,336 - DEBUG - f631730e-1786-4169-bc76-b504ffa6a747 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:08:23,338 - DEBUG - 4afc08c4-893a-49eb-96b1-830609cca130 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:08:23,338 - DEBUG - 48024788-1f8a-4be9-a6b3-b07344e96d2f - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:08:23,338 - DEBUG - c4c30bff-e3d3-4ac0-9131-722a5b797e04 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:08:23,338 - DEBUG - 0a9a9bb0-0c96-4765-8f18-90acda086e0d - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:08:23,338 - DEBUG - f631730e-1786-4169-bc76-b504ffa6a747 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:08:23,585 - DEBUG - 666c085b-cf0c-4474-8667-facac1d195fa - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 10:08:23,589 - DEBUG - 666c085b-cf0c-4474-8667-facac1d195fa - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 10:09:30,389 - INFO - Logger initialized
+2022-08-15 10:09:30,390 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:10:23,980 - INFO - Logger initialized
+2022-08-15 10:10:23,981 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:10:53,546 - INFO - Logger initialized
+2022-08-15 10:10:53,547 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:11:40,364 - INFO - Logger initialized
+2022-08-15 10:11:40,366 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:13:07,689 - INFO - Logger initialized
+2022-08-15 10:13:07,690 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:13:40,773 - INFO - Logger initialized
+2022-08-15 10:13:40,773 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:14:02,376 - INFO - Logger initialized
+2022-08-15 10:14:02,376 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:15:23,620 - INFO - Logger initialized
+2022-08-15 10:15:23,620 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:15:40,252 - INFO - Logger initialized
+2022-08-15 10:15:40,253 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:16:25,603 - INFO - Logger initialized
+2022-08-15 10:16:25,604 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:16:25,936 - DEBUG - ba0a418d-3c95-4ea7-a0e0-bb534f6e79f4 - http://127.0.0.1:8000/ : Request started
+2022-08-15 10:16:25,937 - DEBUG - ba0a418d-3c95-4ea7-a0e0-bb534f6e79f4 - http://127.0.0.1:8000/ : Request ended
+2022-08-15 10:16:26,063 - DEBUG - de1036ef-08c5-47e8-987d-aca98ce265ef - http://127.0.0.1:8000/images/icons/gear.png : Request started
+2022-08-15 10:16:26,063 - DEBUG - de1036ef-08c5-47e8-987d-aca98ce265ef - http://127.0.0.1:8000/images/icons/gear.png : Request ended
+2022-08-15 10:16:33,772 - DEBUG - 12fe03a8-df4f-4470-a70a-3dfa22b34fa5 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:16:33,773 - DEBUG - 12fe03a8-df4f-4470-a70a-3dfa22b34fa5 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:16:37,841 - DEBUG - 457c9c30-7c93-4470-9c16-a1f44f816042 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 10:16:37,847 - DEBUG - 457c9c30-7c93-4470-9c16-a1f44f816042 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 10:17:16,934 - INFO - Logger initialized
+2022-08-15 10:17:16,934 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:17:54,418 - INFO - Logger initialized
+2022-08-15 10:17:54,418 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:34:04,819 - INFO - Logger initialized
+2022-08-15 10:34:04,820 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:34:04,827 - DEBUG - bd90d623-0108-405b-bcd7-bb5a17d9bf17 - http://127.0.0.1:8000/data/overview : Request started
+2022-08-15 10:34:10,781 - DEBUG - dc99b394-a633-4b53-bf93-53d4d3487776 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:34:10,782 - DEBUG - dc99b394-a633-4b53-bf93-53d4d3487776 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:34:11,331 - DEBUG - 7515577b-da5a-4f4f-b105-533b3bd6c56b - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 10:34:11,334 - DEBUG - 7515577b-da5a-4f4f-b105-533b3bd6c56b - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 10:34:17,264 - INFO - bd90d623-0108-405b-bcd7-bb5a17d9bf17 - Overview of the data - 46
+2022-08-15 10:34:17,273 - DEBUG - bd90d623-0108-405b-bcd7-bb5a17d9bf17 - http://127.0.0.1:8000/data/overview : Request ended
+2022-08-15 10:37:07,403 - INFO - Logger initialized
+2022-08-15 10:37:07,404 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:37:07,423 - DEBUG - 9cbc9335-1430-4358-bffa-2ddefdc1e72f - http://127.0.0.1:8000/data/ship : Request started
+2022-08-15 10:37:11,763 - DEBUG - 9cbc9335-1430-4358-bffa-2ddefdc1e72f - http://127.0.0.1:8000/data/ship : Request ended
+2022-08-15 10:37:20,393 - DEBUG - ae7c5116-e62f-4f70-809e-c9735f45f838 - http://127.0.0.1:8000/data/embark : Request started
+2022-08-15 10:37:33,819 - DEBUG - ae7c5116-e62f-4f70-809e-c9735f45f838 - http://127.0.0.1:8000/data/embark : Request ended
+2022-08-15 10:38:38,134 - DEBUG - 51d98eae-7843-4c02-8bdb-78a67c6c6ff7 - http://127.0.0.1:8000/data/overview : Request started
+2022-08-15 10:38:53,282 - INFO - 51d98eae-7843-4c02-8bdb-78a67c6c6ff7 - Overview of the data - 46
+2022-08-15 10:38:53,289 - DEBUG - 51d98eae-7843-4c02-8bdb-78a67c6c6ff7 - http://127.0.0.1:8000/data/overview : Request ended
+2022-08-15 10:42:00,139 - INFO - Logger initialized
+2022-08-15 10:42:00,139 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:42:17,181 - INFO - Logger initialized
+2022-08-15 10:42:17,182 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:45:09,071 - INFO - Logger initialized
+2022-08-15 10:45:09,072 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:45:13,419 - DEBUG - a56d9ab4-8c7f-48fb-958c-22c46d93e81a - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:45:13,420 - DEBUG - a56d9ab4-8c7f-48fb-958c-22c46d93e81a - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:45:13,922 - DEBUG - 1010b421-a52f-405b-bd08-70c89540931f - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 10:45:13,925 - DEBUG - 1010b421-a52f-405b-bd08-70c89540931f - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 10:45:25,402 - DEBUG - 84ee3926-806d-4cf4-800a-656003d18cc0 - http://127.0.0.1:8000/data/ship : Request started
+2022-08-15 10:45:29,434 - DEBUG - 84ee3926-806d-4cf4-800a-656003d18cc0 - http://127.0.0.1:8000/data/ship : Request ended
+2022-08-15 10:45:31,449 - DEBUG - fcaced5b-c10d-4805-8642-eaa6df25ec9a - http://127.0.0.1:8000/data/ship : Request started
+2022-08-15 10:45:32,180 - DEBUG - fcaced5b-c10d-4805-8642-eaa6df25ec9a - http://127.0.0.1:8000/data/ship : Request ended
+2022-08-15 10:46:17,604 - INFO - Logger initialized
+2022-08-15 10:46:17,605 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:46:37,343 - INFO - Logger initialized
+2022-08-15 10:46:37,344 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:46:41,645 - DEBUG - ccf9b9b0-fdf8-4810-855a-f2b274886473 - http://127.0.0.1:8000/data/embark : Request started
+2022-08-15 10:46:49,233 - DEBUG - ccf9b9b0-fdf8-4810-855a-f2b274886473 - http://127.0.0.1:8000/data/embark : Request ended
+2022-08-15 10:47:35,245 - INFO - Logger initialized
+2022-08-15 10:47:35,247 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:47:39,584 - DEBUG - 1d215ab8-aeec-4e83-86cb-54d6eb2369c1 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:47:39,585 - DEBUG - 1d215ab8-aeec-4e83-86cb-54d6eb2369c1 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:47:39,736 - DEBUG - 996f252a-251c-4256-816e-52b9b13de6c9 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 10:47:39,744 - DEBUG - 996f252a-251c-4256-816e-52b9b13de6c9 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 10:47:44,385 - DEBUG - 4be482a1-9e93-40be-9e27-dff120c7d6af - http://127.0.0.1:8000/data/embark : Request started
+2022-08-15 10:47:52,034 - DEBUG - 4be482a1-9e93-40be-9e27-dff120c7d6af - http://127.0.0.1:8000/data/embark : Request ended
+2022-08-15 10:49:07,421 - DEBUG - 29f10a49-fcf9-4f1d-9fda-f85ee76a59cd - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:49:07,423 - DEBUG - 29f10a49-fcf9-4f1d-9fda-f85ee76a59cd - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:49:07,918 - DEBUG - 0ba05695-0144-4634-8757-72f94d78bcfc - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 10:49:07,920 - DEBUG - 0ba05695-0144-4634-8757-72f94d78bcfc - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 10:49:13,642 - DEBUG - 7299e37c-dc86-47ce-af30-16b7700f6c72 - http://127.0.0.1:8000/data/embark : Request started
+2022-08-15 10:49:17,522 - DEBUG - 7299e37c-dc86-47ce-af30-16b7700f6c72 - http://127.0.0.1:8000/data/embark : Request ended
+2022-08-15 10:51:20,152 - INFO - Logger initialized
+2022-08-15 10:51:20,153 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:51:33,175 - INFO - Logger initialized
+2022-08-15 10:51:33,176 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:53:26,022 - INFO - Logger initialized
+2022-08-15 10:53:26,022 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:54:54,898 - INFO - Logger initialized
+2022-08-15 10:54:54,899 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:56:06,391 - INFO - Logger initialized
+2022-08-15 10:56:06,392 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:57:25,057 - INFO - Logger initialized
+2022-08-15 10:57:25,058 - INFO - None - Voyages for each ship is - 10
+2022-08-15 10:57:30,081 - DEBUG - 48a39814-9033-428b-bacc-e51ae7927f94 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:57:30,083 - DEBUG - 48a39814-9033-428b-bacc-e51ae7927f94 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:57:46,388 - DEBUG - c435bfc4-f4a0-4cef-b02e-c2c17a9ffae7 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:57:46,389 - DEBUG - c435bfc4-f4a0-4cef-b02e-c2c17a9ffae7 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:58:05,785 - DEBUG - acdfe2cc-7d34-40a3-a239-5251a48dc373 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 10:58:05,786 - DEBUG - acdfe2cc-7d34-40a3-a239-5251a48dc373 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 10:58:06,078 - DEBUG - fa53a942-fc60-4af7-8fe6-3941874966a3 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 10:58:06,084 - DEBUG - fa53a942-fc60-4af7-8fe6-3941874966a3 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 10:58:16,090 - DEBUG - c16263df-1618-4429-b1e6-03df6fa80d09 - http://127.0.0.1:8000/data/overview : Request started
+2022-08-15 10:58:28,454 - INFO - c16263df-1618-4429-b1e6-03df6fa80d09 - Overview of the data - 46
+2022-08-15 10:58:28,463 - DEBUG - c16263df-1618-4429-b1e6-03df6fa80d09 - http://127.0.0.1:8000/data/overview : Request ended
+2022-08-15 11:00:19,329 - INFO - Logger initialized
+2022-08-15 11:00:19,329 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:01:02,896 - INFO - Logger initialized
+2022-08-15 11:01:02,896 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:01:52,722 - INFO - Logger initialized
+2022-08-15 11:01:52,722 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:02:16,884 - INFO - Logger initialized
+2022-08-15 11:02:16,884 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:03:29,737 - INFO - Logger initialized
+2022-08-15 11:03:29,738 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:03:44,145 - INFO - Logger initialized
+2022-08-15 11:03:44,146 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:03:56,754 - DEBUG - 95f83b11-d0db-4700-855b-509e43a49993 - http://127.0.0.1:8000/data/voyage : Request started
+2022-08-15 11:04:03,501 - INFO - 95f83b11-d0db-4700-855b-509e43a49993 - All Voyage data - {'DF': ['DF0543', 'DF0549', 'DF0550', 'DF0542', 'DF0541', 'DF0552', 'DF0551', 'DF0546', 'DF0548', 'DF0547'], 'DM': ['DM1367', 'DM1372', 'DM1366', 'DM1371', 'DM1374', 'DM1375', 'DM1368', 'DM1370', 'DM1369', 'DM1373'], 'DW': ['DW1890', 'DW1885', 'DW1888', 'DW1884', 'DW1889', 'DW1886', 'DW1891', 'DW1883', 'DW1887', 'DW1882'], 'DD': ['DD1173', 'DD1178', 'DD1174', 'DD1180', 'DD1179', 'DD1172', 'DD1181', 'DD1176', 'DD1175', 'DD1177'], 'WW': ['WW0162', 'WW0185', 'WW0193', 'WW0191', 'WW0188', 'WW0190']}
+2022-08-15 11:04:03,540 - DEBUG - 95f83b11-d0db-4700-855b-509e43a49993 - http://127.0.0.1:8000/data/voyage : Request ended
+2022-08-15 11:04:49,259 - INFO - Logger initialized
+2022-08-15 11:04:49,260 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:07:00,707 - INFO - Logger initialized
+2022-08-15 11:07:00,707 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:07:43,366 - INFO - Logger initialized
+2022-08-15 11:07:43,367 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:08:47,175 - INFO - Logger initialized
+2022-08-15 11:08:47,175 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:10:19,070 - INFO - Logger initialized
+2022-08-15 11:10:19,071 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:10:30,872 - INFO - Logger initialized
+2022-08-15 11:10:30,872 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:11:20,229 - INFO - Logger initialized
+2022-08-15 11:11:20,229 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:14:18,205 - INFO - Logger initialized
+2022-08-15 11:14:18,205 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:14:37,044 - INFO - Logger initialized
+2022-08-15 11:14:37,044 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:14:50,560 - INFO - Logger initialized
+2022-08-15 11:14:50,560 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:15:34,392 - INFO - Logger initialized
+2022-08-15 11:15:34,393 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:16:16,044 - INFO - Logger initialized
+2022-08-15 11:16:16,045 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:17:31,104 - INFO - Logger initialized
+2022-08-15 11:17:31,105 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:21:44,481 - INFO - Logger initialized
+2022-08-15 11:21:44,482 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:22:04,004 - INFO - Logger initialized
+2022-08-15 11:22:04,005 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:22:43,869 - INFO - Logger initialized
+2022-08-15 11:22:43,869 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:23:10,581 - INFO - Logger initialized
+2022-08-15 11:23:10,581 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:24:38,974 - INFO - Logger initialized
+2022-08-15 11:24:38,975 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:24:49,776 - INFO - Logger initialized
+2022-08-15 11:24:49,777 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:26:35,809 - INFO - Logger initialized
+2022-08-15 11:26:35,810 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:26:54,295 - DEBUG - 0badb21c-43e2-49af-9f25-5d2881f00ee6 - http://127.0.0.1:8000/data/embark : Request started
+2022-08-15 11:27:03,445 - DEBUG - 0badb21c-43e2-49af-9f25-5d2881f00ee6 - http://127.0.0.1:8000/data/embark : Request ended
+2022-08-15 11:28:35,908 - DEBUG - 13121ea6-6053-4e34-b12b-86c9c6cce512 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 11:28:35,909 - DEBUG - 13121ea6-6053-4e34-b12b-86c9c6cce512 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 11:28:43,302 - DEBUG - 53f53778-2d48-4e67-9a58-a8d04bc1c9e1 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 11:28:43,303 - DEBUG - 53f53778-2d48-4e67-9a58-a8d04bc1c9e1 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 11:28:59,452 - DEBUG - 6fe41def-d1df-4d6d-b47d-e2ecb96fcb2e - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 11:28:59,466 - DEBUG - 6fe41def-d1df-4d6d-b47d-e2ecb96fcb2e - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 11:29:42,800 - DEBUG - d9ae4e2a-639b-4a02-b778-28578fd886c0 - http://127.0.0.1:8000/model/table : Request started
+2022-08-15 11:29:42,808 - DEBUG - d9ae4e2a-639b-4a02-b778-28578fd886c0 - Column loaded
+2022-08-15 11:29:42,809 - DEBUG - d9ae4e2a-639b-4a02-b778-28578fd886c0 - http://127.0.0.1:8000/model/table : Request ended
+2022-08-15 11:30:12,524 - DEBUG - 95ce2b19-38c3-4bb6-af5d-3361f5c08f55 - http://127.0.0.1:8000/data/voyage : Request started
+2022-08-15 11:30:21,343 - INFO - 95ce2b19-38c3-4bb6-af5d-3361f5c08f55 - All Voyage data - {'DF': ['DF0546', 'DF0547', 'DF0551', 'DF0550', 'DF0552', 'DF0542', 'DF0541', 'DF0548', 'DF0543', 'DF0549'], 'DM': ['DM1375', 'DM1372', 'DM1373', 'DM1370', 'DM1369', 'DM1366', 'DM1367', 'DM1371', 'DM1374', 'DM1368'], 'DW': ['DW1891', 'DW1889', 'DW1887', 'DW1883', 'DW1882', 'DW1885', 'DW1886', 'DW1884', 'DW1890', 'DW1888'], 'DD': ['DD1179', 'DD1181', 'DD1180', 'DD1172', 'DD1174', 'DD1178', 'DD1173', 'DD1177', 'DD1176', 'DD1175'], 'WW': ['WW0190', 'WW0193', 'WW0185', 'WW0188', 'WW0162', 'WW0191']}
+2022-08-15 11:30:21,380 - DEBUG - 95ce2b19-38c3-4bb6-af5d-3361f5c08f55 - http://127.0.0.1:8000/data/voyage : Request ended
+2022-08-15 11:31:49,107 - DEBUG - ec3d63f1-78d8-41a8-a043-baa27a57fad3 - http://127.0.0.1:8000/data/overview : Request started
+2022-08-15 11:31:54,385 - INFO - ec3d63f1-78d8-41a8-a043-baa27a57fad3 - Overview of the data - 46
+2022-08-15 11:31:54,393 - DEBUG - ec3d63f1-78d8-41a8-a043-baa27a57fad3 - http://127.0.0.1:8000/data/overview : Request ended
+2022-08-15 11:35:17,986 - INFO - Logger initialized
+2022-08-15 11:35:17,987 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:35:18,006 - DEBUG - 5df617f7-ff1e-4228-b6fe-3d4c425cb986 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 11:35:18,007 - DEBUG - 5df617f7-ff1e-4228-b6fe-3d4c425cb986 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 11:35:18,198 - DEBUG - b365b897-c4dc-42cc-94d0-7a3947d8a05e - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 11:35:18,205 - DEBUG - b365b897-c4dc-42cc-94d0-7a3947d8a05e - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 11:36:48,880 - DEBUG - 422a6d51-8318-46bc-b348-07d4540425e8 - http://127.0.0.1:8000/data/overview : Request started
+2022-08-15 11:36:55,971 - INFO - 422a6d51-8318-46bc-b348-07d4540425e8 - Overview of the data - 46
+2022-08-15 11:36:55,978 - DEBUG - 422a6d51-8318-46bc-b348-07d4540425e8 - http://127.0.0.1:8000/data/overview : Request ended
+2022-08-15 11:38:45,016 - INFO - Logger initialized
+2022-08-15 11:38:45,017 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:39:03,254 - INFO - Logger initialized
+2022-08-15 11:39:03,255 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:39:33,086 - INFO - Logger initialized
+2022-08-15 11:39:33,087 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:39:36,483 - DEBUG - e7a1ca2a-6006-4598-9385-584a69c9e4b8 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 11:39:36,485 - DEBUG - e7a1ca2a-6006-4598-9385-584a69c9e4b8 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 11:39:36,583 - DEBUG - 5aadbf7e-e33c-458b-be9a-1d944d9266d7 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 11:39:36,590 - DEBUG - 5aadbf7e-e33c-458b-be9a-1d944d9266d7 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 11:41:55,424 - INFO - Logger initialized
+2022-08-15 11:41:55,425 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:41:55,445 - DEBUG - 86592c47-7033-487a-aabc-42b5dbe168e5 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 11:41:55,447 - DEBUG - 86592c47-7033-487a-aabc-42b5dbe168e5 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 11:41:55,551 - DEBUG - 670235ea-0e63-4830-bbc8-fdd15479c778 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 11:41:55,556 - DEBUG - 670235ea-0e63-4830-bbc8-fdd15479c778 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 11:44:01,064 - INFO - Logger initialized
+2022-08-15 11:44:01,066 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:44:01,087 - DEBUG - bacc156f-a75d-4ee3-b4d0-f99bcf0a2bb9 - http://127.0.0.1:8000/model/table : Request started
+2022-08-15 11:44:01,088 - DEBUG - bacc156f-a75d-4ee3-b4d0-f99bcf0a2bb9 - Column loaded
+2022-08-15 11:44:01,090 - DEBUG - bacc156f-a75d-4ee3-b4d0-f99bcf0a2bb9 - http://127.0.0.1:8000/model/table : Request ended
+2022-08-15 11:45:05,367 - INFO - Logger initialized
+2022-08-15 11:45:05,369 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:45:24,804 - INFO - Logger initialized
+2022-08-15 11:45:24,806 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:45:24,837 - DEBUG - cc1f35eb-7c4c-474a-b28c-3d5140e32381 - http://127.0.0.1:8000/ : Request started
+2022-08-15 11:45:24,837 - DEBUG - 7f69b26a-0edc-4ef6-8db5-ad3f71922eb7 - http://127.0.0.1:8000/api/docs : Request started
+2022-08-15 11:45:24,840 - DEBUG - cc1f35eb-7c4c-474a-b28c-3d5140e32381 - http://127.0.0.1:8000/ : Request ended
+2022-08-15 11:45:24,841 - DEBUG - 7f69b26a-0edc-4ef6-8db5-ad3f71922eb7 - http://127.0.0.1:8000/api/docs : Request ended
+2022-08-15 11:45:25,263 - DEBUG - 0e9e6e55-a488-461e-8491-137d1db15c30 - http://127.0.0.1:8000/openapi.json : Request started
+2022-08-15 11:45:25,278 - DEBUG - 0e9e6e55-a488-461e-8491-137d1db15c30 - http://127.0.0.1:8000/openapi.json : Request ended
+2022-08-15 11:45:57,412 - INFO - Logger initialized
+2022-08-15 11:45:57,414 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:45:57,442 - DEBUG - e899b9ff-6b44-4b7d-8164-603688da9c3f - http://127.0.0.1:8000/ : Request started
+2022-08-15 11:45:57,445 - DEBUG - e899b9ff-6b44-4b7d-8164-603688da9c3f - http://127.0.0.1:8000/ : Request ended
+2022-08-15 11:45:59,626 - DEBUG - 491d7332-f20b-4e21-8216-269bfd2b6eac - http://127.0.0.1:8000/ : Request started
+2022-08-15 11:45:59,628 - DEBUG - 491d7332-f20b-4e21-8216-269bfd2b6eac - http://127.0.0.1:8000/ : Request ended
+2022-08-15 11:46:03,173 - DEBUG - 5ffa0f62-e8aa-47ae-b6be-7e8560fd2bfb - http://127.0.0.1:8000/ : Request started
+2022-08-15 11:46:03,175 - DEBUG - 5ffa0f62-e8aa-47ae-b6be-7e8560fd2bfb - http://127.0.0.1:8000/ : Request ended
+2022-08-15 11:46:05,122 - DEBUG - f31a1c86-3596-46b0-8e19-d0f61b41a6f4 - http://127.0.0.1:8000/ : Request started
+2022-08-15 11:46:05,123 - DEBUG - f31a1c86-3596-46b0-8e19-d0f61b41a6f4 - http://127.0.0.1:8000/ : Request ended
+2022-08-15 11:46:34,758 - INFO - Logger initialized
+2022-08-15 11:46:34,758 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:48:20,071 - INFO - Logger initialized
+2022-08-15 11:48:20,072 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:48:20,088 - DEBUG - b89ed4c2-a3fd-4b3b-b4a4-9da0f8351160 - http://127.0.0.1:8000/stream-logs : Request started
+2022-08-15 11:48:20,089 - DEBUG - b89ed4c2-a3fd-4b3b-b4a4-9da0f8351160 - Client Connected
+2022-08-15 11:48:20,091 - DEBUG - b89ed4c2-a3fd-4b3b-b4a4-9da0f8351160 - http://127.0.0.1:8000/stream-logs : Request ended
+2022-08-15 11:48:55,224 - INFO - Logger initialized
+2022-08-15 11:48:55,225 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:49:16,345 - INFO - Logger initialized
+2022-08-15 11:49:16,346 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:49:55,111 - INFO - Logger initialized
+2022-08-15 11:49:55,111 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:50:15,272 - INFO - Logger initialized
+2022-08-15 11:50:15,273 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:50:58,151 - INFO - Logger initialized
+2022-08-15 11:50:58,153 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:51:41,001 - INFO - Logger initialized
+2022-08-15 11:51:41,001 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:52:12,923 - INFO - Logger initialized
+2022-08-15 11:52:12,923 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:52:37,965 - INFO - Logger initialized
+2022-08-15 11:52:37,965 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:53:01,034 - INFO - Logger initialized
+2022-08-15 11:53:01,035 - INFO - None - Voyages for each ship is - 10
+2022-08-15 11:53:25,661 - INFO - Logger initialized
+2022-08-15 11:53:25,662 - INFO - None - Voyages for each ship is - 10
