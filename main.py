@@ -1,10 +1,11 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Depends
 from fastapi.responses import JSONResponse, StreamingResponse
 from sse_starlette.sse import EventSourceResponse
 from fastapi.middleware.cors import CORSMiddleware
 from resources.docs import title, description, tags_metadata, logs_stream, home
 from api import router, lookup
-from apilogging import log, createRequestIdContextvar, getRequestId, logGenerator
+from config.logging import log, createRequestIdContextvar, getRequestId
+from config.setting import get_settings, Settings
 
 app = FastAPI(title=title, description=description, openapi_tags=tags_metadata, docs_url="/api/docs")
 
@@ -39,17 +40,9 @@ async def request_middleware(request: Request, call_next):
     finally:
         response.headers["X-Request-ID"] = getRequestId()
         log.debug(f"{request.url} : Request ended")
-        return response
+        return response 
+
 
 @app.get('/' , summary="ROOT PAGE", description=home)
-async def root():
-    return {"version": "1.3.0",
-            "port": "8000",
-            "health": "green",
-            "name": "sre-embarkation-manifest-backend"
-            }
-
-@app.get('/stream-logs', summary="LOGS", description=logs_stream)
-async def run(request: Request):
-    event_generator = logGenerator(request)
-    return EventSourceResponse(event_generator)
+async def root(settings: Settings = Depends(get_settings)):
+    return settings.status.dict()

@@ -2,9 +2,6 @@
 
 # logger.debug('This is a debug message')
 
-from sqlite3 import DatabaseError
-from xmlrpc.client import INTERNAL_ERROR
-
 
 
 

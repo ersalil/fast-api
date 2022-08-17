@@ -3,10 +3,10 @@ from db.database import get_db
 from fastapi import Depends, HTTPException, APIRouter
 import datetime, json
 from sqlalchemy.orm import Session
-from settings import Settings
 from resources.strings import AVG_VOYAGE_DATA, DATA_NOT_FOUND, INTERNAL_ERROR, DATABASE_ERROR, LIMIT_IS, COLUMN_LOADED, OVERVIEW, VOYAGE_DATA
 from resources.docs import table_columns, ship_data, embark_data, avg_voyage_data, data_overview, voyage_data
-from apilogging import log
+from config.logging import log
+from config.setting import get_settings
 
 DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
@@ -14,9 +14,8 @@ router = APIRouter(prefix='/data')
 lookup = APIRouter(prefix='/model')
 
 # limit = 10
-setting = Settings()
 try:
-    limit = setting.limit
+    limit = get_settings().limit
     log.info(LIMIT_IS, limit)
     if limit == 0 or limit == None:
         limit = 10
