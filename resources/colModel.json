@@ -1,11 +1,11 @@
 [
   {
-      "title": "Ship Name",
+      "title": "Ship Code",
       "dataIndex": "code",
       "key": "code"
   },
   {
-    "title": "Ship Number",
+    "title": "Voyage Number",
     "dataIndex": "number",
     "key": "number"
   },
@@ -26,12 +26,12 @@
   },
   {
     "title": "CheckIn Time",
-    "dataIndex": "start_date",
-    "key": "start_date"
+    "dataIndex": "checkedin_time",
+    "key": "checkedin_time"
   },
   {
     "title": "OnBoard Time",
-    "dataIndex": "end_date",
-    "key": "end_date"
+    "dataIndex": "onboard_time",
+    "key": "onboard_time"
   }
 ]
