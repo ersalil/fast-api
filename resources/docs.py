@@ -32,10 +32,7 @@ description = {
     {
         "name": "Get Checkedin and Onboard Count for n voyages for a ship",
         "description": """The response body contains the updated CheckedIn and Onboard Count formerly distributed with respect to the time bucket of 30 minutes for N voyages of every ship. 
-                        \nThis manipulation of data is the pre-requisites of Line Graph Representation on UI.""",
-        "example":"""
-                        {}           
-                    """
+                        \nThis manipulation of data is the pre-requisites of Line Graph Representation on UI."""
     },
     "avg_voyage":
     {
