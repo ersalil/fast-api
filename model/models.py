@@ -41,3 +41,4 @@ class ApplicationSetting(Base):
     name = Column(String)
     value = Column(Integer)
     description = Column(String)
+

@@ -2,13 +2,13 @@ from fastapi import FastAPI, Request, Depends
 from fastapi.responses import JSONResponse, StreamingResponse
 from sse_starlette.sse import EventSourceResponse
 from fastapi.middleware.cors import CORSMiddleware
-from resources.docs import title, description, tags_metadata, logs_stream, home
+from resources.docs import title, description, tags_metadata, introduction
 from api import router, lookup
 from config.logging import log, createRequestIdContextvar, getRequestId
 from config.setting import get_settings, Settings
 import time
 
-app = FastAPI(title=title, description=description, openapi_tags=tags_metadata, docs_url="/api/docs")
+app = FastAPI(title=title, description=introduction, openapi_tags=tags_metadata, docs_url="/api/docs")
 
 # frontend_url in the config file
 origins = ["*"]
@@ -44,7 +44,6 @@ async def request_middleware(request: Request, call_next):
         log.debug(f"{request.url} : Request ended")
         return response 
 
-
-@app.get('/' , summary="ROOT PAGE", description=home)
+@app.get('/' , summary=description["status"]["name"], description=description["status"]['description'])
 async def root(settings: Settings = Depends(get_settings)):
     return settings.status.dict()
