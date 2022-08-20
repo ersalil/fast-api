@@ -1,7 +1,7 @@
 # build a schema using pydantic
-from datetime import datetime
+from datetime import datetime, time
 from pickle import DICT
-from typing import Dict, List
+from typing import Dict, List, Union, Optional
 from pydantic import BaseModel
 
 # define Embark schema and its fields
@@ -69,22 +69,31 @@ class EachItemSetVoyage(BaseModel):
     moci_count: int
     diff_checkedin_couch: int
     diff_onboard_couch: int
-    time_int: str
+    time_int: time
     embark_count: int
+    class Config:
+        orm_mode = True
+
 
 
 class EachItemSetAVGVoyage(BaseModel):
     ship: str
-    time_int: str
-    avg_checkin_count: int
+    time_int: time
+    avg_checkedin_count: int
     avg_onboard_count: int
+    class Config:
+        orm_mode = True
+
 
 
 class EachItemSetOverview(BaseModel):
-    checkedin_couch: int
-    onboard_couch: int
     code: str
     number: str
     oci_completed_core: int
     moci_completed_core: int
     expected_couch: int
+    checkedin_time: time
+    onboard_time: time
+    class Config:
+        orm_mode = True
+

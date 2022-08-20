@@ -39,7 +39,7 @@ async def tableModel():
 
 
 # getting all checkedin and onboard counts for n voyages for each ships
-@router.get('/voyage', response_model= Dict[str, EachItemSetVoyage], tags=['Master Data'], status_code=200, summary=description['voyage']['name'], description=description['voyage']['description'])
+@router.get('/voyage', response_model=Dict[str, List[EachItemSetVoyage]], tags=['Master Data'], status_code=200, summary=description['voyage']['name'], description=description['voyage']['description'])
 def linedata(db: Session = Depends(get_db)):
     temp_result = getEmbarkationManifest(db, limit)
     try:
@@ -47,11 +47,9 @@ def linedata(db: Session = Depends(get_db)):
         result = defaultdict(list)
         for each in temp_result:
             result[each['ship']].append(each)
-
-
         for ship, value in result.items():
             result[ship] = sorted(sorted(value, key=lambda i: i['vnum']), key=lambda i: i['time_int'])
-    except Exception as e:
+    except Exception as err:
         log.error(INTERNAL_ERROR,err)
         raise HTTPException(status_code=500, detail=f"Message: {INTERNAL_ERROR}, Traceback: {err}")
     finally:
@@ -62,8 +60,13 @@ def linedata(db: Session = Depends(get_db)):
 @router.get('/avg/voyage', response_model=List[EachItemSetAVGVoyage], tags=['Master Data'], status_code=200, summary=description['avg_voyage']['name'], description=description['avg_voyage']['description'])
 def bardata(db: Session = Depends(get_db)):
     data = getEmbarkationBar(db, limit)
-    result = sorted(data, key=lambda i: i['time_int'])
-    return result
+    try:        
+        result = sorted(data, key=lambda i: i['time_int'])    
+    except Exception as err:
+        log.error(INTERNAL_ERROR,err)
+        raise HTTPException(status_code=500, detail=f"Message: {INTERNAL_ERROR}, Traceback: {err}")
+    finally:
+        return result
 
 # getting the overview data or brief summary of each voyage
 # Data like: Ship Code, Voyage Number, Embarkation Count,
@@ -95,7 +98,7 @@ def tabledata(db: Session = Depends(get_db)):
                 res['moci_completed_core'] = each['moci_count']
                 res['expected_couch'] = each['embark_count']
                 ls.append(res)
-    except Exception as e:
+    except Exception as err:
         log.error(INTERNAL_ERROR,err)
         raise HTTPException(status_code=500, detail=f"Message: {INTERNAL_ERROR}, Traceback: {err}")
     finally:    
