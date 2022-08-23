@@ -1,3 +1,4 @@
+from sys import flags
 from db.crud import getEmbarkationManifest, getEmbarkationBar
 from db.database import get_db
 from fastapi import Depends, HTTPException, APIRouter
@@ -40,13 +41,14 @@ async def tableModel():
 
 # getting all checkedin and onboard counts for n voyages for each ships
 @router.get('/voyage', response_model=Dict[str, List[EachItemSetVoyage]], tags=['Master Data'], status_code=200, summary=description['voyage']['name'], description=description['voyage']['description'])
-def linedata(db: Session = Depends(get_db)):
+async def linedata(db: Session = Depends(get_db)):
     temp_result = getEmbarkationManifest(db, limit)
     try:
         # # iterate over each ship
         result = defaultdict(list)
         for each in temp_result:
-            result[each['ship']].append(each)
+            if each['diff_checkedin_couch'] != 0 or each['diff_onboard_couch'] != 0:
+                result[each['ship']].append(each)
         for ship, value in result.items():
             result[ship] = sorted(sorted(value, key=lambda i: i['vnum']), key=lambda i: i['time_int'])
     except Exception as err:
@@ -58,7 +60,7 @@ def linedata(db: Session = Depends(get_db)):
 # getting the Average Checkedin and Onboard Count for all voyages for a ship
 # Data like: {'ship': 'ship_name','time_int': 'time', 'avg_checkin_count': avg_checkin, 'avg_onboard_count': avg_onboard}
 @router.get('/avg/voyage', response_model=List[EachItemSetAVGVoyage], tags=['Master Data'], status_code=200, summary=description['avg_voyage']['name'], description=description['avg_voyage']['description'])
-def bardata(db: Session = Depends(get_db)):
+async def bardata(db: Session = Depends(get_db)):
     data = getEmbarkationBar(db, limit)
     try:        
         result = sorted(data, key=lambda i: i['time_int'])    
@@ -72,7 +74,7 @@ def bardata(db: Session = Depends(get_db)):
 # Data like: Ship Code, Voyage Number, Embarkation Count,
 #            OCI Count, MOCI Count, Checkedin Time and OnBoard Time
 @router.get('/overview', response_model=List[EachItemSetOverview], tags=['Master Data'], status_code=200, summary=description['overview']['name'], description=description['overview']['description'])
-def tabledata(db: Session = Depends(get_db)):
+async def tabledata(db: Session = Depends(get_db)):
     data = getEmbarkationManifest(db, limit)
     try:
         ls = []
