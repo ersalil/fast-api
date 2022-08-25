@@ -28,7 +28,10 @@ app.include_router(lookup)
 # home route
 @app.middleware("http")
 async def request_middleware(request: Request, call_next):
-    createRequestIdContextvar()
+    if request.headers.get('X-Request-ID') is None:
+        createRequestIdContextvar()
+    else:
+        createRequestIdContextvar(id=request.headers.get('X-Request-ID'))
     log.debug(f"{request.url} : Request started")
 
     try:
