@@ -69,8 +69,8 @@ logging.config.dictConfig(LOGGING)
 
 request_id_contextvar = contextvars.ContextVar("request_id", default=None)
 
-def createRequestIdContextvar():
-    return request_id_contextvar.set(str(uuid.uuid4()))
+def createRequestIdContextvar(id=str(uuid.uuid4())):
+    return request_id_contextvar.set(id)
 
 def getRequestId():
     return request_id_contextvar.get()
