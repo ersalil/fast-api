@@ -1,1 +1,1 @@
-sre-embarkation-manifest-backend:1.5.0
+sre-embarkation-manifest-backend:1.6.0
